@@ -1,8 +1,8 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get posts_home_url
+  test "should get root" do
+    get root_url
     assert_response :success
   end
 end
