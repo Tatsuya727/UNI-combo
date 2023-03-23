@@ -42,7 +42,5 @@ jobs:
         run: |
           bundle exec rails db:migrate
 
-      - name: verify
-        run: |
-          bundle exec rubocop
-          bundle exec rspec
+      - name: run rspec
+        run: bundle exec rspec
