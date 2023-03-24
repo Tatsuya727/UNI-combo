@@ -18,5 +18,18 @@ module UNICombo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Customizing Rails Generators
+  config.generators do |g|
+      g.assets false
+      g.helper false
+      g.jbuilder false 
+      g.test_framework :rspec, 
+        fixtures: false,
+        request_specs: false, 
+        view_specs: false, 
+        helper_specs: false, 
+        routing_specs: false 
+    end
   end
 end

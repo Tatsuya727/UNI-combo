@@ -14,12 +14,12 @@ gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sassc-rails"
+gem "bootstrap-sass"
 # gem "redis", "~> 4.0"
 
 group :development, :test do
   gem "sqlite3"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'rspec-rails'
 end
 
 group :development do
@@ -33,8 +33,9 @@ group :test do
   gem "rails-controller-testing"
   gem "minitest"
   gem "minitest-reporters"
-  gem "guard"
-  gem "guard-minitest"
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :production do
