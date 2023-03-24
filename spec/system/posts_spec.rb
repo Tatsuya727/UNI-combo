@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
 
   describe "#root" do
     it "ホームを表示" do
@@ -12,17 +9,17 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
-  describe "リンクのテスト" do
+  describe "トップページのリンクテスト" do
     before do
       visit root_path
     end
 
-    describe "#root" do
-      it "logo" do
-        expect(page).to have_link "UNICombo", href: "/"
-      end
+    it "logo=>root" do
+      expect(page).to have_link "UNICombo", href: root_path
+    end
+    
+    it "signup" do
+      expect(page).to have_link "Sign Up", href: signup_path
     end
   end
-
-  pending "add some scenarios (or delete) #{__FILE__}"
 end

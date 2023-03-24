@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-
   describe "user should be valid" do |variable|
     let(:user) { build(:user) }
 
@@ -39,6 +37,16 @@ RSpec.describe User, type: :model do
       valid_addresses.each do |valid_address|
         user.email = valid_address
         expect(user).to be_valid
+      end
+    end
+
+    it "メアドの不適切なフォーマット" do
+      valid_addresses = %w[ userexample.com
+                            USER@foo,COM
+                            A_US-ER@foobarorg ]
+      valid_addresses.each do |valid_address|
+        user.email = valid_address
+        expect(user).to_not be_valid
       end
     end
 
