@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "user should be valid" do |variable|
-    let(:user) { FactoryBot.build(:user) }
+  let(:user) { FactoryBot.build(:user) }
+  describe "user validation" do
     
     it "user valid" do
       expect(user).to be_valid
@@ -64,6 +64,12 @@ RSpec.describe User, type: :model do
     it "パスワードは6文字以上でなければならない" do
       user.password = user.password_confirmation = "a" * 5
       expect(user).to_not be_valid
+    end
+  end
+
+  describe "user digest" do
+    it "remember_digestが存在しない場合のauthenticated?" do
+      expect(user.authenticated?("")).to_not be_truthy
     end
   end
 end

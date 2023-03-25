@@ -12,7 +12,6 @@ RSpec.describe "Sessions", type: :system do
     end
     
     describe "#new" do
-
       it "ログインページ" do
         expect(page.status_code).to eq(200)
       end
