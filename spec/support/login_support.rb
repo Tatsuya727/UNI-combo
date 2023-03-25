@@ -6,8 +6,13 @@ module LoginSupport
         click_button "ログイン"
     end
 
-    def login(user)
-        post login_path, params: { session: { email:    user.email,
-                                              password: user.password} }
+    def login(user, remember_me: "1")
+        post login_path, params: { session: { email:       user.email,
+                                              password:    user.password,
+                                              remember_me: remember_me} }
+    end
+
+    def is_logged_in?
+        !session[:user_id].nil?
     end
 end
