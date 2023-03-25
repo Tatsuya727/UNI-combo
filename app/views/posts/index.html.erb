@@ -1,12 +1,14 @@
 <div class="row">
-    <div class="col-3 col-md-3"></div>
-    <div class="col-6 col-md-6"></div>
-    <div class="col-3 col-md-3">
+    <div class="col-md-3">
+        <div class="characters"></div>
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3">
         <div class="card">
             <div class="card-body">
                 <div class="box"></div>
                 <div class="card-title">Name</div>
-                <%= link_to "マイページ", "#", {class: "btn btn-primary"} %>
+                <%= link_to "マイページ", current_user, {class: "btn btn-primary"} %>
             </div>
         </div>
     </div>

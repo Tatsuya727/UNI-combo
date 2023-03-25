@@ -24,32 +24,44 @@ h1 {
 }
 
 
-.col-3 {
-    background-color: aqua;
-    height: 500px;
+.col-md-3 {
+    height: 800px;
+}
+.col-md-2 {
+    height: 800px;
 }
 
-.col-6 {
-    background-color: brown;
-    height: 500px;
+.col-md-6 {
+    background-color: #dcdcdc;
+    height: 800px;
 }
 
 /* header */
 
-#logo {
-    float: left;
-    margin-right: 10px;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
-    font-weight: bold;
+header{
+    height: 60px;
+    
+    #logo {
+        float: left;
+        margin-right: 10px;
+        font-size: 1.7em;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        padding-top: 9px;
+        font-weight: bold;
+    }
+    
+    #logo:hover {
+        color: #fff;
+        text-decoration: none;
+    }
 }
 
-#logo:hover {
-    color: #fff;
-    text-decoration: none;
+/* Dropdown menu */
+
+.dropdown-menu.active {
+    display: block;
 }
 
 /* footer */
@@ -83,11 +95,39 @@ footer ul li {
     margin-left: 15px;
 }
 
+@media (max-width: 800px) {
+    footer {
+        small {
+            display: block;
+            float: none;
+            margin-bottom: 1em;
+        }
+        ul {
+            float: none;
+            padding: 0;
+            li {
+            float: none;
+            margin-left: 0;
+            }
+        }
+    }
+}
+
 /* トップページ */
+
+.characters {
+    background-color: #777;
+    margin-top: 40px;
+    margin-left: 200px;
+    height: 700px;
+    width: 250px;
+}
+
 .card {
-    margin-top: 30px;
+    margin-top: 100px;
     padding: 20px;
     height: 200px;
+    width: 350px;
     background-color: #fff;
     border-radius: 6px;
 
@@ -124,14 +164,21 @@ input {
 #error_explanation {
     color: red;
     ul {
-      color: red;
-      margin: 0 0 30px 0;
+        color: red;
+        margin: 0 0 30px 0;
     }
-  }
-  
-  .field_with_errors {
+}
+
+.field_with_errors {
     @extend .has-error;
     .form-control {
-      color: $state-danger-text;
+        color: $state-danger-text;
     }
-  }
+}
+
+.login-form {
+    .signup-btn{
+        width: 100%;
+        margin-top: 30px;
+    }
+}

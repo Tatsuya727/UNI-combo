@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "user should be valid" do |variable|
-    let(:user) { build(:user) }
-
+    let(:user) { FactoryBot.build(:user) }
+    
     it "user valid" do
       expect(user).to be_valid
     end
