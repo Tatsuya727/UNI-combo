@@ -14,12 +14,32 @@ RSpec.describe "Posts", type: :system do
       visit root_path
     end
 
-    it "logo=>root" do
-      expect(page).to have_link "UNICombo", href: root_path
+    context "未ログイン" do
+      it "logo=>root" do
+        expect(page).to have_link "UNICombo", href: root_path
+      end
+      
+      it "#signup" do
+        expect(page).to have_link "新規登録", href: signup_path
+      end
+  
+      it "#login" do
+        expect(page).to have_link "ログイン", href: login_path
+      end
     end
-    
-    it "signup" do
-      expect(page).to have_link "Sign Up", href: signup_path
+
+    context "ログイン済" do
+      let(:user) { FactoryBot.create(:user) }
+
+      before do
+        visit login_path
+        login_in_login_page user
+        visit root_path
+      end
+      
+      it "#user" do
+        expect(page).to have_link "マイページ", href: "/users/#{ user.id }"
+      end
     end
   end
 end
