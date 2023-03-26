@@ -17,6 +17,7 @@ gem "sassc-rails"
 gem "bootstrap-sass"
 gem "will_paginate"
 gem "bootstrap-will_paginate"
+gem "faker"
 # gem "redis", "~> 4.0"
 
 group :development, :test do
@@ -37,7 +38,6 @@ group :test do
   gem "minitest-reporters"
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  gem "faker"
 end
 
 group :production do
