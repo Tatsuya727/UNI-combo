@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
     def logged_in_user # ログイン済みかの確認
       unless logged_in?
+        store_location
         flash[:danger] = "ログインしていません"
         redirect_to login_url, status: :see_other
       end

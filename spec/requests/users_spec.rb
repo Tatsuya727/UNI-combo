@@ -86,6 +86,12 @@ RSpec.describe "Users", type: :request do
         expect(flash).to_not be_empty
         expect(response).to redirect_to login_path
       end
+      
+      it "ログインするとeditにリダイレクトされる" do
+        get edit_user_path(user)
+        login user
+        expect(response).to redirect_to edit_user_path(user)
+      end
 
       it "updateにアクセスするとログインページにリダイレクトされる" do
         patch user_path(user), params: { user: { name:                  user.name,
