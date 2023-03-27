@@ -24,6 +24,11 @@ class User < ApplicationRecord
     def remember # remember_tokenをユーザーのデータベースに記憶する
         self.remember_token = User.new_token
         update_attribute(:remember_digest, User.digest(remember_token))
+        remember_digest
+    end
+
+    def session_token
+        remember_digest || remember
     end
 
     def authenticated?(remember_token) # 渡されたトークンがダイジェストと一致したらtrueを返す

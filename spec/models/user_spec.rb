@@ -24,12 +24,12 @@ RSpec.describe User, type: :model do
     end
 
     it "メアドの文字制限(~255)" do
-      user.email = "a" * 244 + "@example.com"
+      user.email = "a" * 244 + "@hogehoge.com"
       expect(user).to_not be_valid
     end
 
     it "メアドの適切なフォーマット" do
-      valid_addresses = %w[ user@example.com
+      valid_addresses = %w[ user@hogehoge.com
                             USER@foo.COM
                             A_US-ER@foo.bar.org
                             first.last@foo.jp
