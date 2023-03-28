@@ -6,7 +6,18 @@ require:
   - rubocop-rspec
 
 AllCops:
+  SuggestExtensions: false
   NewCops: enable
+  DisplayCopNames: true
 
 Style/StringLiterals:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
   Enabled: false
