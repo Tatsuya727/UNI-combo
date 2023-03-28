@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
 
   describe "user digest" do
     it "remember_digestが存在しない場合のauthenticated?" do
-      expect(user.authenticated?("")).to_not be_truthy
+      expect(user.authenticated?(:remember ,"")).to_not be_truthy
     end
   end
 end

@@ -31,13 +31,22 @@ class User < ApplicationRecord
         remember_digest || remember
     end
 
-    def authenticated?(remember_token) # 渡されたトークンがダイジェストと一致したらtrueを返す
-        return false if remember_digest.nil?
-        BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    def authenticated?(attribute, token) # 渡されたトークンがダイジェストと一致したらtrueを返す
+        digest = send("#{attribute}_digest")
+        return false if digest.nil?
+        BCrypt::Password.new(digest).is_password?(token)
     end
 
     def forget # ユーザーのログイン情報を破棄する
         update_attribute(:remember_digest, nil)
+    end
+
+    def activate # アカウントを有効にする
+        update_columns(activated: true, activated_at: Time.zone.now)
+    end
+
+    def send_activation_email # 有効化用のメールを送信する
+        UserMailer.account_activation(self).deliver_now
     end
 
     private

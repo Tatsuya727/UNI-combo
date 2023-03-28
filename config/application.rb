@@ -20,7 +20,7 @@ module UNICombo
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Customizing Rails Generators
-  config.generators do |g|
+    config.generators do |g|
       g.assets false
       g.helper false
       g.jbuilder false 
