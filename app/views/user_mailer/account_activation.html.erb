@@ -1,23 +1,10 @@
-<h1>UNIcombo</h1>
+<h1>Sample App</h1>
 
-<p>こんにちは <%= @user.name %>さん</p>
+<p>Hi <%= @user.name %>,</p>
 
 <p>
-まだ本登録は完了していません。
-
-下記のリンクをクリックすると本登録が完了します。
-
+Welcome to the Sample App! Click on the link below to activate your account:
 </p>
 
-<%= link_to "登録する", edit_account_activation_url(@user.activation_token,
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
-                                                    
-
-
-<p>このリンクの有効期限は2時間です。</p>
-
-<p>【ご注意】</p>
-
-<p>※このメールはシステムより自動で送信されているメールです。このメールに返信することは出来ませんのでご注意ください。</p>
-
-<p>※このメールにお心当たりの無い場合は、このメールを破棄してください。</p>
