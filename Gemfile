@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "2.7.7"
 
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "sprockets-rails"
@@ -15,9 +15,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sassc-rails"
 gem "bootstrap-sass"
-gem "will_paginate"
-gem "bootstrap-will_paginate"
 gem "faker"
+gem "kaminari"
+gem "bootstrap4-kaminari-views"
 # gem "redis", "~> 4.0"
 
 group :development, :test do
@@ -40,7 +40,7 @@ group :test do
   gem "rails-controller-testing"
   gem "minitest"
   gem "minitest-reporters"
-  gem 'rspec-rails'
+  gem "rspec-rails"
   gem "factory_bot_rails"
 end
 

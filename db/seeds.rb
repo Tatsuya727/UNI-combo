@@ -19,3 +19,16 @@ User.create!(name:                  "Hogehoge user",
                  activated:             true,
                  activated_at:          Time.zone.now)
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+    title       = Faker::Lorem.sentence(word_count: 5)
+    comando     = Faker::Lorem.sentence(word_count: 5)
+    description = Faker::Lorem.sentence(word_count: 5)
+    users.each { |user| user.combo.create!(title:        title,
+                                            description:  description,
+                                            comando:      comando,
+                                            damage:       1,
+                                            hit_count:    1,
+                                            character_id: 1) }
+end

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @combos = @user.combo.page(params[:page])
   end
 
   def new
@@ -42,15 +43,6 @@ class UsersController < ApplicationController
     end
 
     # beforeフィルタ
-
-    def logged_in_user # ログイン済みかの確認
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしていません"
-        redirect_to login_url, status: :see_other
-      end
-    end
-
     def correct_user # 正しいユーザーで無かった場合rootにリダイレクト
       @user = User.find(params[:id])
       redirect_to(root_url, status: :see_other) unless current_user?(@user)

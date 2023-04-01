@@ -1,0 +1,36 @@
+<% provide(:title, "投稿") %>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_with(model: @combo, local: true) do |f| %>
+            <%= render "shared/error_messages", object: f.object %>
+
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+            
+            <%= f.label :character_id %>
+            <%= f.collection_select(:character_id, Character.all, :id, :character_name, prompt: "選択してください") %>
+            
+            <div class="checkbox-columns">
+                <% Situation.pluck(:name, :id).each do |name, id| %>
+                    <%= check_box_tag "combo[situation][]", id %>
+                    <%= label_tag "combo[situation][]", name %>
+                <% end %>
+            </div>
+            
+            <%= f.label :damage %>
+            <%= f.text_field :damage, class: "form-control" %>
+            
+            <%= f.label :hit_count %>
+            <%= f.text_field :hit_count, class: "form-control" %>
+            
+            <%= f.label :comando %>
+            <%= f.text_area :comando, class: "form-control" %>
+            
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control" %>
+            
+            <%= f.submit "投稿する", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>
