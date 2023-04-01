@@ -3,5 +3,6 @@ class PostsController < ApplicationController
   end
 
   def index
+    @combo = current_user.combo.build if logged_in?
   end
 end

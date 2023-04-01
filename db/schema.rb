@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_062108) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_104656) do
+  create_table "characters", force: :cascade do |t|
+    t.string "character_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "combos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "video_url"
+    t.integer "character_id"
+    t.integer "hit_count"
+    t.integer "damage"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "comando"
+    t.string "situation"
+    t.index ["user_id", "created_at", "character_id"], name: "index_combos_on_user_id_and_created_at_and_character_id"
+    t.index ["user_id"], name: "index_combos_on_user_id"
+  end
+
+  create_table "situations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -27,4 +55,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_062108) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "combos", "users"
 end

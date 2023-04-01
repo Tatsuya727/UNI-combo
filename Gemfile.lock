@@ -79,8 +79,9 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    bootstrap-will_paginate (1.0.0)
-      will_paginate
+    bootstrap4-kaminari-views (1.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -122,6 +123,18 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.3)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -294,7 +307,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.7)
@@ -307,13 +319,14 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   bootstrap-sass
-  bootstrap-will_paginate
+  bootstrap4-kaminari-views
   capybara
   debug
   factory_bot_rails
   faker
   importmap-rails
   jbuilder
+  kaminari
   minitest
   minitest-reporters
   pg (= 1.3.5)
@@ -334,7 +347,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  will_paginate
 
 RUBY VERSION
    ruby 3.1.3p185

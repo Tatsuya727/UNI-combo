@@ -1,0 +1,16 @@
+class Combo < ApplicationRecord
+  belongs_to :user
+  default_scope -> { order(created_at: :desc) }
+  validates :title,        presence: true, length: { maximum: 100 }
+  validates :comando,      presence: true, length: { maximum: 200 }
+  validates :description,  presence: true, length: { maximum: 300 }
+  validates :situation,    presence: true, length: { maximum: 20 }
+  validates :damage,       presence: true, numericality: { only_integer: true, 
+                                                           greater_than_or_equal_to: 1,
+                                                           less_than_or_equal_to: 10000 }
+  validates :hit_count,    presence: true, numericality: { only_integer: true,
+                                                           greater_than_or_equal_to: 1,
+                                                           less_than_or_equal_to: 1000 }
+  validates :character_id, presence: true
+  validates :user_id,      presence: true
+end
