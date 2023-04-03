@@ -4,6 +4,7 @@ RSpec.describe "Users", type: :request do
   let(:user)       { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
   let(:mail)       { UserMailer.account_activation(user) }
+  let(:combo)      { FactoryBot.create(:combo) }
   describe "GET /new" do
     it "returns http success" do
       get signup_path

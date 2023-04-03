@@ -6,6 +6,7 @@ RSpec.describe "Users", type: :system do
   end
   let(:user) { FactoryBot.create(:user) }
   let(:mail) { UserMailer.account_activation(user) }
+  let(:combo)  { FactoryBot.create(:combo) }
 
   describe "valid signup form" do
     before do

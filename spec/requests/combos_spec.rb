@@ -4,9 +4,10 @@ RSpec.describe "Combos", type: :request do
     let!(:user)  { FactoryBot.create(:user) }
     let(:combo)  { FactoryBot.create(:combo) }
 
-    @test_combo = { title: Faker::Lorem.sentence,
-                    comando: Faker::Lorem.sentence,
+    @test_combo = { title:       Faker::Lorem.sentence,
+                    comando:     Faker::Lorem.sentence,
                     description: Faker::Lorem.sentence,
+                    situation:   Faker::Lorem.sentence,
                     damage: 1000,
                     hit_count: 10,
                     character_id: 2 }

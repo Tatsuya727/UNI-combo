@@ -1,5 +1,6 @@
 class CombosController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
+    before_action :correct_user,   only: [:destroy]
 
     def new
         @combo = Combo.new
@@ -10,17 +11,29 @@ class CombosController < ApplicationController
             flash[:success] = "投稿完了"
             redirect_to root_url
         else
+            @feed_items = current_user.feed.page(params[:page])
             render "new", status: :unprocessable_entity
         end
     end
 
     def destroy
-
+        @combo.destroy
+        flash[:success] = "削除しました"
+        if request.referrer.nil?
+            redirect_to root_url, status: :see_other
+        else
+            redirect_to request.referrer, status: :see_other
+        end
     end
 
     private
 
         def combo_params
             params.require(:combo).permit(:title, :comando, :description, :damage, :hit_count, :character_id, :video_url, situation: [])
+        end
+
+        def correct_user
+            @combo = current_user.combo.find_by(id: params[:id])
+            redirect_to root_url, status: :see_other if @combo.nil?
         end
 end
