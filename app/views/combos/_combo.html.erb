@@ -1,12 +1,16 @@
 <li id="post-combo-<%= combo.id %>">
-    <%= link_to gravatar_for(combo.user, size: 50), combo.user %>
     <span class="user"><%= link_to combo.user.name, combo.user %></span>
     <span class="title"><%= combo.title %></span>
     <span class="description"><%= combo.description %></span>
     <span class="comando"><%= combo.comando %></span>
+    <span class="situation"><%= combo.situation %></span>
     <span class="damage"><%= combo.damage %></span>
     <span class="hit_count"><%= combo.hit_count %></span>
     <span class="timestamp">
         Posted <%= time_ago_in_words(combo.created_at) %> ago.
+        <% if current_user?(combo.user) %>
+            <%= link_to "delete", combo, data: { "turbo-method": :delete,
+                                                    turbo_confirm: "本当に削除しますか?" } %>
+        <% end %>
     </span>
 </li>

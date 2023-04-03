@@ -4,7 +4,7 @@ FactoryBot.define do
         comando      { "632A > 623C" }
         video_url    { "hoge_url" }
         description  { "説明" }
-        situation    { "端" }
+        situation    { 1 }
         damage       { 3000 }
         hit_count    { 10 }
         character_id { 1 }
@@ -17,6 +17,7 @@ FactoryBot.define do
         end
     end
 end
+
 
 def user_with_posts(posts_count: 5)
     FactoryBot.create_list(:combo, posts_count, user_id: 1)

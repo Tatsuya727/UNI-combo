@@ -9,11 +9,11 @@
             <%= f.text_field :title, class: "form-control" %>
             
             <%= f.label :character_id %>
-            <%= f.collection_select(:character_id, Character.all, :id, :character_name, prompt: "選択してください") %>
+            <%= f.collection_select(:character_id, Character.all, :id, :character_name, { prompt: "選択してください" }, { class: "form-control" }) %>
             
             <div class="checkbox-columns">
                 <% Situation.pluck(:name, :id).each do |name, id| %>
-                    <%= check_box_tag "combo[situation][]", id %>
+                    <%= check_box_tag "combo[situation][]", id, false, class: "checkbox" %>
                     <%= label_tag "combo[situation][]", name %>
                 <% end %>
             </div>
@@ -29,6 +29,9 @@
             
             <%= f.label :description %>
             <%= f.text_area :description, class: "form-control" %>
+
+            <%= f.label :video_url %>
+            <%= f.file_field :video_url, :accept => 'video/*' , class: "form-control" %>
             
             <%= f.submit "投稿する", class: "btn btn-primary" %>
         <% end %>
