@@ -32,7 +32,6 @@ h1 {
 }
 
 .col-md-6 {
-    border: solid;
     height: 800px;
 }
 
@@ -64,63 +63,17 @@ header{
     display: block;
 }
 
-/* footer */
-
-footer {
-    margin-top: 45px;
-    padding-top: 5px;
-    border-top: 1px solid #eaeaea;
-    color: #777;
-}
-
-footer a {
-    color: #555;
-}
-
-footer a:hover {
-    color: #222;
-}
-
-footer small {
-    float: left;
-}
-
-footer ul {
-    float: right;
-    list-style: none;
-}
-
-footer ul li {
-    float: left;
-    margin-left: 15px;
-}
-
-@media (max-width: 800px) {
-    footer {
-        small {
-            display: block;
-            float: none;
-            margin-bottom: 1em;
-        }
-        ul {
-            float: none;
-            padding: 0;
-            li {
-            float: none;
-            margin-left: 0;
-            }
-        }
-    }
-}
 
 /* トップページ */
 
 .characters {
-    background-color: #777;
     margin-top: 40px;
     margin-left: 200px;
     height: 700px;
     width: 250px;
+    ul {
+      list-style: none;
+    }
 }
 
 .card {

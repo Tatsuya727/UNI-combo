@@ -1,17 +1,16 @@
 <div class="row">
     <div class="col-md-3">
-        <div class="characters"></div>
+        <%= render "combos/characters"%>
     </div>
     <div class="col-md-6">
         <h3>Micropost Feed</h3>
         <%= render 'shared/feed' %>
     </div>
     <div class="col-md-3">
-        <%= link_to "コンボを投稿する", new_combo_path %>
+        <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary"} %>
         <div class="card">
             <div class="card-body">
-                <div class="box"></div>
-                <div class="card-title">Name</div>
+                <div class="card-title"><%= current_user.name %></div>
                 <%= link_to "マイページ", current_user, {class: "btn btn-primary"} %>
             </div>
         </div>
