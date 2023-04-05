@@ -23,18 +23,6 @@ h1 {
     margin-top: 45px;
 }
 
-
-.col-md-3 {
-    height: 800px;
-}
-.col-md-2 {
-    height: 800px;
-}
-
-.col-md-6 {
-    height: 800px;
-}
-
 /* header */
 
 header{
@@ -67,12 +55,18 @@ header{
 /* トップページ */
 
 .characters {
-    margin-top: 40px;
-    margin-left: 200px;
+    margin-top: -20px;
+    margin-left: 50px;
     height: 700px;
     width: 250px;
-    ul {
-      list-style: none;
+    list-style: none;
+    position: sticky;
+    li {
+      text-align: center;
+      padding: 9px 0;
+      background-color: #bbb;
+      border: solid 1px #222;
+      color: #222;
     }
 }
 
