@@ -10,7 +10,11 @@
         <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary"} %>
         <div class="card">
             <div class="card-body">
-                <div class="card-title"><%= current_user.name %></div>
+                <% if logged_in? %>
+                    <div class="card-title"><%= current_user.name %></div>
+                <% else %>
+                    <div>ゲスト</div>
+                <% end %>
                 <%= link_to "マイページ", current_user, {class: "btn btn-primary"} %>
             </div>
         </div>
