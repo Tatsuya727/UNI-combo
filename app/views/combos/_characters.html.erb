@@ -1,5 +1,5 @@
 <ul class="characters">
 <% @characters.each do |character| %>
-    <li><%= link_to character.character_name, "#" %></li>
+    <li><%= link_to character.character_name, combos_path(character_id: character.id) %></li>
 <% end %>
 </ul>
