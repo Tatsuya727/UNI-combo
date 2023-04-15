@@ -62,11 +62,15 @@ header{
     list-style: none;
     position: sticky;
     li {
+      text-decoration: none;
       text-align: center;
       padding: 9px 0;
       background-color: #bbb;
       border: solid 1px #222;
       color: #222;
+    }
+    li:hover {
+      background-color: #e8e8e8;
     }
 }
 
@@ -148,34 +152,69 @@ input {
 
 .microposts {
     list-style: none;
+    margin: 5px 0;
     padding: 0;
+    width: 100%;
     li {
       padding: 10px 0;
-      border-top: 1px solid #e8e8e8;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      background-color: #fff;
     }
-    .user {
+    .post-head {
+      display: flex;
+      
+    }
+    .situation {
+      display: inline-block;
+      margin-left: 800px;
+      background-color: orange;
+      border-radius: 10px;
+      width: 34px;
+      text-align: center;
+    }
+    .hit_count {
+      margin-left: 60px;
+      display: inline-block;
+      font-size: 15px;
+      color: #222;
+      text-align: center;
+      background-color: aqua;
+      border-radius: 10px;
+      width: 34px;
+    }
+    .damage {
+      margin-left: 60px;
+      display: inline-block;
+      font-size: 15px;
+      color: #222;
+      background-color: aqua;
+      border-radius: 10px;
+      width: 34px;
+      text-align: center;
+    }
+    .title {
+      display: block;
+      font-size: 17px;
+      font-weight: bold;
+      color: #222;
+      padding-left: 12px;
+    }
+    .comando {
+      margin-top: 10px;
+      margin-left: 30px;
+      display: block;
+      font-size: 22px;
+      color: #222;
+    }
+    .user-link {
       margin-top: 5em;
-      padding-top: 0;
-    }
-    .content {
-      display: block;
-      margin-left: 60px;
-      img {
-        display: block;
-        padding: 5px 0;
-      }
-    }
-    .timestamp {
-      color: $gray-light;
-      display: block;
-      margin-left: 60px;
-    }
-    .gravatar {
-      float: left;
-      margin-right: 10px;
-      margin-top: 5px;
+      padding-left: 900px;
+      text-align: right;
     }
   }
+
+
   
   aside {
     textarea {
@@ -184,12 +223,6 @@ input {
     }
   }
   
-  span.image {
-    margin-top: 10px;
-    input {
-      border: 0;
-    }
-  }
 
   .checkbox-columns {
     columns: 2;
@@ -206,37 +239,7 @@ input {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
   }
-  
-  .microposts {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
-}
+
 
 aside {
   textarea {
@@ -249,5 +252,24 @@ span.image {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/*show micropost*/
+
+.show-micropost {
+  .title {
+  
+  }
+  .comando {
+    background-color: #fff;
+  }
+  .video {
+    margin-top: 10px;
+    float: left;
+  }
+  .description {
+    margin-top: 10px;
+    font-size: 17px;
   }
 }

@@ -2,9 +2,24 @@ class CombosController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     before_action :correct_user,   only: [:destroy]
 
+    def index
+        if params[:character_id].present?
+            @combo = Combo.where(character_id: params[:character_id]).page(params[:page])
+        else
+            @combo = Combo.all.page(params[:page])
+        end
+        @characters = Character.all
+    end
+
+    def show
+        @combo      = Combo.find(params[:id])
+        @characters = Character.all
+    end
+    
     def new
         @combo = Combo.new
     end
+
     def create
         @combo = current_user.combo.new(combo_params)
         if @combo.save

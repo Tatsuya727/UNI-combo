@@ -2,7 +2,6 @@ FactoryBot.define do
     factory :combo do
         title        { "example combo" }
         comando      { "632A > 623C" }
-        video_url    { "hoge_url" }
         description  { "説明" }
         situation    { 1 }
         damage       { 3000 }
@@ -12,7 +11,6 @@ FactoryBot.define do
         created_at   { 10.minutes.ago }
 
         trait :latest_post do
-            video_url  { "foo_url" }
             created_at { Time.zone.now }
         end
     end

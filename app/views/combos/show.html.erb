@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-2">
+        <%= render "combos/characters"%>
+    </div>
+    <div class="col-md-10 show-micropost">
+        <h2 class="title"><%= @combo.title %></h2>
+        <h3 class="comando"><%= @combo.comando %></h3>
+        <span class="hit_count"><%= @combo.hit_count %></span>
+        <span class="damage"><%= @combo.damage %></span>
+        <% if @combo.video_url.attached? %>
+            <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video" %>
+        <% end %>
+        <span class="description"><%= @combo.description %></span>
+        <span class="situation"><%= Situation.find(@combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
+        <span class="user"><%= link_to @combo.user.name, @combo.user %></span>
+        <span class="timestamp">
+            Posted <%= time_ago_in_words(@combo.created_at) %> ago.
+            <% if current_user?(@combo.user) %>
+                <%= link_to "delete", @combo, data: { "turbo-method": :delete,
+                                                        turbo_confirm: "本当に削除しますか?" } %>
+            <% end %>
+        </span>
+    </div>
+</div>

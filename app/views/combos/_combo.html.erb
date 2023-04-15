@@ -1,23 +1,15 @@
-<li id="post-combo-<%= combo.id %>" class="dropdown">
-<a href="#" id="post-title" class="dropdown-toggle">
-    <span class="title"><%= combo.title %></span>
-    <span class="comando"><%= combo.comando %></span>
-    <span class="user"><%= link_to combo.user.name, combo.user %></span>
-    <span class="hit_count"><%= combo.hit_count %></span>
-    <span class="damage"><%= combo.damage %></span>
-</a>
-<ul class="dropdown-menu">
-    <span class="description"><%= combo.description %></span>
-    <span class="situation"><%= combo.situation %></span>
-    <span class="timestamp">
-        Posted <%= time_ago_in_words(combo.created_at) %> ago.
-        <% if current_user?(combo.user) %>
-            <%= link_to "delete", combo, data: { "turbo-method": :delete,
-                                                    turbo_confirm: "本当に削除しますか?" } %>
+<ol class="microposts">
+    <li id="post-combo-<%= combo.id %>">
+            <div class="post-head">
+                <span class="character"><%= Character.find(combo.character_id).character_name %></span>
+                <span class="situation"><%= Situation.find(combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
+                <span class="hit_count"><%= combo.hit_count %></span>
+                <span class="damage"><%= combo.damage %></span>
+            </div>
+        <%= link_to combo_path(combo), data: { turbo_frame: "combo" } do %>
+            <span class="title"><%= combo.title %></span>
+            <span class="comando"><%= combo.comando %></span>
+            <span class="user"><%= link_to combo.user.name, combo.user, class: "user-link" %></span>
         <% end %>
-    </span>
-    <% if combo.video_url.attached? %>
-        <%= video_tag rails_blob_path(combo.video_url), autoplay: false, muted: false, controls: true, height: "80%", width: "80%" %>
-    <% end %>
-</ul>
-</li>
+    </li>
+</ol>
