@@ -4,7 +4,8 @@ class CombosController < ApplicationController
 
     def index
         if params[:character_id].present?
-            @combo = Combo.where(character_id: params[:character_id]).page(params[:page])
+            @combo     = Combo.where(character_id: params[:character_id]).page(params[:page])
+            @character = Character.find(params[:character_id])
         else
             @combo = Combo.all.page(params[:page])
         end

@@ -1,3 +1,8 @@
+<% if params[:character_id].present? %>
+    <h3><%= @character.character_name %></h3>
+<% else %>
+    <h3>ALL Character</h3>
+<% end %>
 <% if @combo.any? %>
     <%= render @combo %>
     <%= paginate @combo %>
