@@ -9,6 +9,7 @@ FactoryBot.define do
         character_id { 1 }
         user_id      { 1 }
         created_at   { 10.minutes.ago }
+        video_url    { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'files', 'sample.mp4')) }
 
         trait :latest_post do
             created_at { Time.zone.now }

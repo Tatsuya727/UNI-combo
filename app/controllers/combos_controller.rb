@@ -42,6 +42,10 @@ class CombosController < ApplicationController
         end
     end
 
+    def post_ajax
+        render partial: "post-comando/character#{params[:character_id]}", locals: { combo: @combo }
+    end
+
     private
 
         def combo_params
