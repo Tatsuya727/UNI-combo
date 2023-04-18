@@ -1,7 +1,6 @@
 <ol class="microposts">
     <li id="post-combo-<%= combo.id %>">
             <div class="post-head">
-                <span class="character"><%= Character.find(combo.character_id).character_name %></span>
                 <span class="situation"><%= Situation.find(combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
                 <span class="hit_count"><%= combo.hit_count %></span>
                 <span class="damage"><%= combo.damage %></span>

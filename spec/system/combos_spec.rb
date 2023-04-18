@@ -6,6 +6,7 @@ RSpec.describe "Combos", type: :system do
   end
   let!(:user)       { FactoryBot.create(:user) }
   let!(:character)  { FactoryBot.create(:character) }
+  let!(:situation)  { FactoryBot.create(:situation) }
 
   describe "ユーザーページ" do
     before do
