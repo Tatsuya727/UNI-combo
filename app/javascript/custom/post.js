@@ -1,6 +1,6 @@
 // 選んだキャラクターによって、コンボの一覧を変更する
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("turbo:load", function () {
   $("#combo_character_id").on("change", function () {
     var character_id = $(this).val();
     $.ajax({

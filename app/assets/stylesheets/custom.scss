@@ -289,4 +289,42 @@ span.image {
 }
 
 .btn-field {
+  margin-bottom: 40px;
+  button {
+    margin: 3px;
+  }
+  .comando-type1 {
+    margin-top: 5px;
+    margin-bottom: -10px;
+    font-weight: bold;
+    background-color: rgb(157, 140, 218);
+    text-align: center;
+  }
+  .comando-type2 {
+    margin-top: 5px;
+    margin-bottom: -10px;
+    font-weight: bold;
+    background-color: rgb(255, 36, 36);
+    text-align: center;
+  }
+  .system-button {
+    text-align: right;
+    .back-button {
+      background-color: coral;
+    }
+    .delete-button {
+      background-color: green;
+    }
+  }
+  .btn-title {
+    border-bottom: 1px solid;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .common-comando {
+    margin-bottom: 15px;
+  }
+  .button-container {
+    
+  }
 }
