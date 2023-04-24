@@ -1,8 +1,8 @@
 <% provide(:title, "投稿") %>
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <%= form_with(model: @combo, local: true, multipart: true) do |f| %>
+    <div class="col-md-5 col-md-offset-1">
+        <%= form_with(model: @combo, local: true, multipart: true, remote: true ) do |f| %>
             <%= render "shared/error_messages", object: f.object %>
 
             <%= f.label :title %>
@@ -23,16 +23,27 @@
             
             <%= f.label :hit_count %>
             <%= f.text_field :hit_count, class: "form-control" %>
-            
-            <%= f.label :comando %>
-            <%= f.text_area :comando, class: "form-control" %>
-            
+
             <%= f.label :description %>
             <%= f.text_area :description, class: "form-control" %>
 
             <%= f.label :video_url %>
             <%= f.file_field :video_url, class: "form-control" %>
-
+    </div>
+    <div class="col-md-5">        
+            <%= f.label :comando %>
+            <%= f.text_area :comando, class: "input-comando" %>
+            <div class="btn-field">
+                <div class="system-button">
+                    <button type="button" class="back-button">一つ戻す</button>
+                    <button type="button" class="delete-button">すべて消す</button>
+                </div>
+                <div class="btn-title">共通コマンド</div>
+                <div class="common-comando"><%= render "post-comando/common-comando" %></div>
+                <div class="btn-title">キャラクターコマンド</div>
+                <div class="button-container"></div>
+            </div>
+            
             <%= f.submit "投稿する", class: "btn btn-primary" %>
         <% end %>
     </div>
