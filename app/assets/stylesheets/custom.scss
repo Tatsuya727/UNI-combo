@@ -272,6 +272,22 @@ span.image {
     margin-top: 10px;
     font-size: 17px;
   }
+  .video-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .video-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
 }
 
 /* post form */

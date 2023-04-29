@@ -2,7 +2,8 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "custom/menu";
-import "custom/post";
-import "custom/post-button";
+//import "custom/post";
+//import "custom/post-button";
+//import "custom/video";
 import jquery from "jquery";
 window.$ = jquery;

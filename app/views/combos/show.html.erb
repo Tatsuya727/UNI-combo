@@ -8,8 +8,13 @@
         <span class="hit_count"><%= @combo.hit_count %></span>
         <span class="damage"><%= @combo.damage %></span>
         <% if @combo.video_url.attached? %>
-            <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video" %>
+            <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
         <% end %>
+        <div class="video-control">
+            <button id="increaseSpeed">2倍速</button>
+            <button id="decreaseSpeed">0.5倍速</button>
+            <button id="toggleLoop">ループ切り替え</button>
+        </div>
         <span class="description"><%= @combo.description %></span>
         <span class="situation"><%= Situation.find(@combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
         <span class="user"><%= link_to @combo.user.name, @combo.user %></span>

@@ -1,19 +1,31 @@
 // 選んだキャラクターによって、コンボの一覧を変更する
 
-window.addEventListener("turbo:load", function () {
-  $("#combo_character_id").on("change", function () {
-    var character_id = $(this).val();
-    $.ajax({
-      url: "/combos/post_ajax",
-      type: "GET",
-      data: { character_id: character_id },
-    })
-      .done(function (partial) {
-        $(".button-container").html(partial);
-        console.log(partial);
-      })
-      .fail(function () {
-        console.log("Failed to load partial");
-      });
-  });
+document.addEventListener("turbo:load", function () {
+  var comboCharacterId = document.querySelector("#combo_character_id");
+
+  if (comboCharacterId) {
+    comboCharacterId.addEventListener("change", function () {
+      var character_id = this.value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/combos/post_ajax?character_id=" + encodeURIComponent(character_id), true);
+
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          var buttonContainer = document.querySelector(".button-container");
+          if (buttonContainer) {
+            buttonContainer.innerHTML = xhr.responseText;
+          }
+          console.log(xhr.responseText);
+        } else {
+          console.error("Failed to load partial");
+        }
+      };
+
+      xhr.onerror = function () {
+        console.error("Failed to load partial");
+      };
+
+      xhr.send();
+    });
+  }
 });

@@ -1,8 +1,8 @@
 <% provide(:title, "投稿") %>
 
 <div class="row">
-    <div class="col-md-5 col-md-offset-1">
         <%= form_with(model: @combo, local: true, multipart: true, remote: true ) do |f| %>
+        <div class="col-md-5 col-md-offset-1">
             <%= render "shared/error_messages", object: f.object %>
 
             <%= f.label :title %>
@@ -29,8 +29,8 @@
 
             <%= f.label :video_url %>
             <%= f.file_field :video_url, class: "form-control" %>
-    </div>
-    <div class="col-md-5">        
+        </div>
+        <div class="col-md-5">        
             <%= f.label :comando %>
             <%= f.text_area :comando, class: "input-comando" %>
             <div class="btn-field">
@@ -45,6 +45,6 @@
             </div>
             
             <%= f.submit "投稿する", class: "btn btn-primary" %>
+        </div>
         <% end %>
-    </div>
 </div>
