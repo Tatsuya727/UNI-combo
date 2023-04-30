@@ -54,25 +54,81 @@ header{
 
 /* トップページ */
 
-.characters {
-    margin-top: -20px;
-    margin-left: 50px;
-    height: 700px;
-    width: 250px;
-    list-style: none;
-    position: sticky;
-    li {
-      text-decoration: none;
+.top-left {
+  .side-menu {
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: #000;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+  
+    &-collapsed {
+      transform: translateX(-100%);
+    }
+  
+    &-toggle {
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      width: 30px;
+      height: 30px;
+      background-color: #000;
+      color: #fff;
       text-align: center;
-      padding: 9px 0;
-      background-color: #bbb;
-      border: solid 1px #222;
-      color: #222;
+      line-height: 30px;
+      cursor: pointer;
+      z-index: 1;
     }
-    li:hover {
-      background-color: #e8e8e8;
+  
+    ul.characters {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        margin-bottom: 10px;
+  
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 1.1em;
+  
+          &:hover {
+            color: #ddd;
+          }
+        }
+      }
     }
-}
+  }
+  
+  
+  
+  
+    .arrow {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+  
+  
+  
+  #side-menu-toggle {
+    position: absolute;
+    top: 10px;
+    right: -25px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5em;
+    background-color: #000;
+    padding: 5px;
+  }
+
+
 
 .title-container {
   display: flex;
@@ -91,7 +147,7 @@ header{
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 999;
   left: 0;
   top: 0;
   width: 100%;
@@ -135,15 +191,9 @@ header{
 }
 /* キャラクターのレスポンシブ */
 
-.side-menu {
-  display: none;
-}
 
-@media (min-width: 992px) {
-  .side-menu {
-    display: block;
-  }
-}
+
+
 
 
 @media (max-width: 991.98px) {
