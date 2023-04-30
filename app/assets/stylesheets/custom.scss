@@ -74,6 +74,18 @@ header{
     }
 }
 
+/* キャラクターのレスポンシブ */
+
+.side-menu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .side-menu {
+    display: block;
+  }
+}
+
 .card {
     margin-top: 100px;
     padding: 20px;
@@ -97,6 +109,27 @@ header{
     .btn {
         margin-left: 10px;
     }
+}
+
+@media (max-width: 991.98px) {
+  .row {
+    position: relative;
+  }
+
+  .col-12 {
+    padding-right: 60px;
+  }
+
+  .combo-post-link {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 100;
+  }
+
+  .user-card {
+    display: none;
+  }
 }
 
 /* forms */
@@ -151,68 +184,72 @@ input {
 /* microposts */
 
 .microposts {
-    list-style: none;
-    margin: 5px 0;
-    padding: 0;
-    width: 100%;
-    li {
-      padding: 10px 0;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      background-color: #fff;
-    }
-    .post-head {
-      display: flex;
-      
-    }
-    .situation {
-      display: inline-block;
-      margin-left: 800px;
-      background-color: orange;
-      border-radius: 10px;
-      width: 34px;
-      text-align: center;
-    }
-    .hit_count {
-      margin-left: 60px;
-      display: inline-block;
-      font-size: 15px;
-      color: #222;
-      text-align: center;
-      background-color: aqua;
-      border-radius: 10px;
-      width: 34px;
-    }
-    .damage {
-      margin-left: 60px;
-      display: inline-block;
-      font-size: 15px;
-      color: #222;
-      background-color: aqua;
-      border-radius: 10px;
-      width: 34px;
-      text-align: center;
-    }
-    .title {
-      display: block;
-      font-size: 17px;
-      font-weight: bold;
-      color: #222;
-      padding-left: 12px;
-    }
-    .comando {
-      margin-top: 10px;
-      margin-left: 30px;
-      display: block;
-      font-size: 22px;
-      color: #222;
-    }
-    .user-link {
-      margin-top: 5em;
-      padding-left: 900px;
-      text-align: right;
-    }
+  list-style: none;
+  padding: 0;
+
+  li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    padding: 20px;
+    position: relative;
   }
+}
+
+.post-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  .situation {
+    margin-left: 10px;
+    min-width: 30px;
+    text-align: center;
+    color: crimson;
+    font-size: 1.3em;
+  }
+  .hit_count {
+    margin-left: 10px;
+    min-width: 30px;
+    text-align: center;
+  }
+  .damage {
+    margin-left: 10px;
+    min-width: 30px;
+    text-align: center;
+  }
+}
+
+
+.title {
+  display: block;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  float: left;
+  color: #222;
+}
+
+.comando {
+  display: block;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  clear: both;
+  color: #222;
+}
+
+.user {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  .user-link {
+    text-decoration: none;
+  }
+}
+
 
 
   

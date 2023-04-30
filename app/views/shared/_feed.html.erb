@@ -1,7 +1,9 @@
 <% if params[:character_id].present? %>
     <h3><%= @character.character_name %></h3>
+    <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
 <% else %>
     <h3>ALL Character</h3>
+    <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
 <% end %>
 <% if @combo.any? %>
     <%= render @combo %>

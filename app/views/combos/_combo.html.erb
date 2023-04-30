@@ -1,9 +1,13 @@
 <ol class="microposts">
     <li id="post-combo-<%= combo.id %>">
             <div class="post-head">
-                <span class="situation"><%= Situation.find(combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
-                <span class="hit_count"><%= combo.hit_count %></span>
-                <span class="damage"><%= combo.damage %></span>
+                <span class="situation">
+                    <% combo.situation.tr('[]"', '').split(', ').each do |situation_id| %>
+                        <%= Situation.find(situation_id.to_i).name %>
+                    <% end %>
+                </span>
+                <span class="hit_count"><%= combo.hit_count %> Hit</span>
+                <span class="damage"><%= combo.damage %> Damage</span>
             </div>
         <%= link_to combo_path(combo), data: { turbo_frame: "combo" } do %>
             <span class="title"><%= combo.title %></span>

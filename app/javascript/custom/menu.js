@@ -15,3 +15,6 @@ document.addEventListener("turbo:load", function () {
     menu.classList.toggle("active");
   });
 });
+
+
+// キャラクタータグのサイドメニュー
