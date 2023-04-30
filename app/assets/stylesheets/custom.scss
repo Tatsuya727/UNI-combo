@@ -74,17 +74,40 @@ header{
     }
 }
 
-/* キャラクターのレスポンシブ */
-
-.side-menu {
-  display: none;
-}
-
-@media (min-width: 992px) {
-  .side-menu {
-    display: block;
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .character-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+  }
+  .combo-post-link {
+    display: inline-block;
+    vertical-align: middle;
   }
 }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
 
 .card {
     margin-top: 100px;
@@ -110,6 +133,18 @@ header{
         margin-left: 10px;
     }
 }
+/* キャラクターのレスポンシブ */
+
+.side-menu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .side-menu {
+    display: block;
+  }
+}
+
 
 @media (max-width: 991.98px) {
   .row {
