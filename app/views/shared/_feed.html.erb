@@ -1,10 +1,26 @@
+<div class="title-container">
 <% if params[:character_id].present? %>
-    <h3><%= @character.character_name %></h3>
-    <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
+    <h3 class="character-name"><%= @character.character_name %></h3>
 <% else %>
-    <h3>ALL Character</h3>
-    <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
+    <h3 class="character-name">ALL Character</h3>
 <% end %>
+    <!-- モーダルを開くボタン -->
+    <button id="open-modal">フィルター</button>
+
+    <!-- モーダルウィンドウ -->
+    <div id="filter-modal" class="modal">
+        <div class="modal-content">
+            <h3>プレフィックスでフィルタリング:</h3>
+            <label><input type="checkbox" class="prefix-filter" value="JA"> JA</label>
+            <label><input type="checkbox" class="prefix-filter" value="JC"> JC</label>
+            <!-- 他のプレフィックスチェックボックスを追加 -->
+            <button id="apply-filters">適用</button>
+            <button id="close-modal">閉じる</button>
+        </div>
+    </div>
+
+    <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
+</div>
 <% if @combo.any? %>
     <%= render @combo %>
     <%= paginate @combo %>
