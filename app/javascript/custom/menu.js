@@ -32,35 +32,38 @@ document.addEventListener("turbo:load", function () {
 });
 
 // サイドメニューの開閉
+function toggleSideMenu() {
+  const sideMenu = document.getElementById("side-menu");
+  const sideMenuToggle = document.getElementById("side-menu-toggle");
+
+  if (window.innerWidth <= 991) {
+    sideMenu.classList.add("side-menu-collapsed");
+    sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
+  } else {
+    sideMenu.classList.remove("side-menu-collapsed");
+    sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const sideMenu = document.getElementById("side-menu");
   const sideMenuToggle = document.getElementById("side-menu-toggle");
 
-  function toggleSideMenu() {
-    sideMenu.classList.toggle("side-menu-collapsed");
-    if (sideMenu.classList.contains("side-menu-collapsed")) {
-      sideMenuToggle.innerHTML = "&#9658;"; // 右矢印
-    } else {
-      sideMenuToggle.innerHTML = "&#9664;"; // 左矢印
-    }
-  }
-
   if (sideMenuToggle) {
-    sideMenuToggle.addEventListener("click", toggleSideMenu);
-  }
-
-  function handleWindowResize() {
-    if (window.innerWidth <= 991) {
-      if (!sideMenu.classList.contains("side-menu-collapsed")) {
-        toggleSideMenu();
-      }
-    } else {
+    sideMenuToggle.addEventListener("click", function () {
+      sideMenu.classList.toggle("side-menu-collapsed");
+      // アイコンの変更
       if (sideMenu.classList.contains("side-menu-collapsed")) {
-        toggleSideMenu();
+        sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
+      } else {
+        sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
       }
-    }
+    });
   }
 
-  window.addEventListener("resize", handleWindowResize);
-  handleWindowResize();
+  // ウィンドウのリサイズイベントを監視
+  window.addEventListener("resize", toggleSideMenu);
+
+  // 初期状態でサイドメニューを折りたたむか展開するかを設定
+  toggleSideMenu();
 });
