@@ -7,9 +7,8 @@
             </div>
             <% end %>
             <h3>始動技:</h3>
-            <label><input type="checkbox" class="prefix-filter" value="all"> すべて</label>
-            <label><input type="checkbox" class="prefix-filter" value="JA"> JA</label>
-            <label><input type="checkbox" class="prefix-filter" value="JC"> JC</label>
+            <%= render "filter-comando/common-comando"%>
+            <div class="comando-container"></div>
 
             <h4>Hit Count 並べ替え:</h4>
             <label><input type="radio" name="hit_count_sort" value="asc"> 昇順</label>
@@ -19,16 +18,6 @@
             <label><input type="radio" name="damage_sort" value="asc"> 昇順</label>
             <label><input type="radio" name="damage_sort" value="desc"> 降順</label>
 
-            <h4>シチュエーション:</h4>
-            <label><input type="checkbox" class="situation-filter" value="端"> 端</label>
-            <label><input type="checkbox" class="situation-filter" value="端背負い"> 端背負い</label>
-            <label><input type="checkbox" class="situation-filter" value="確定反撃"> 確定反撃</label>
-            <label><input type="checkbox" class="situation-filter" value="100%"> 100%</label>
-            <label><input type="checkbox" class="situation-filter" value="200%"> 200%</label>
-            <label><input type="checkbox" class="situation-filter" value="瀕死"> 瀕死</label>
-            <label><input type="checkbox" class="situation-filter" value="カウンター"> カウンター</label>
-            <label><input type="checkbox" class="situation-filter" value="ハイカウンター"> ハイカウンター</label>
-            <!-- 他のプレフィックスチェックボックスを追加 -->
             <button id="apply-filters">適用</button>
             <button id="close-modal">閉じる</button>
             <button type="button" class="reset-filters-btn" id="reset-filters">リセット</button>

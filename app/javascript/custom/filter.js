@@ -63,40 +63,6 @@ function sortPosts(attribute, order) {
   });
 }
 
-// 選択されたシチュエーションを取得する関数
-function getSelectedSituations() {
-  const situationCheckboxes = document.querySelectorAll(".situation-filter");
-  const selectedSituations = [];
-
-  situationCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedSituations.push(checkbox.value);
-    }
-  });
-
-  return selectedSituations;
-}
-
-// 選択されたシチュエーションに一致する投稿だけを表示する関数
-function filterPostsBySituation(selectedSituations) {
-  const allPosts = document.querySelectorAll(".microposts li");
-
-  allPosts.forEach((post) => {
-    const postSituations = post.getAttribute("data-situation").split(", ");
-
-    // 選択されたシチュエーションと投稿のシチュエーションが交差するかどうかをチェック
-    const hasMatchingSituation = postSituations.some((situation) =>
-      selectedSituations.includes(situation)
-    );
-
-    if (selectedSituations.length === 0 || hasMatchingSituation) {
-      post.style.display = "block";
-    } else {
-      post.style.display = "none";
-    }
-  });
-}
-
 // フィルタリングと並べ替えを適用する
 document.addEventListener("turbo:load", function () {
   const applyFiltersButton = document.getElementById("apply-filters");
