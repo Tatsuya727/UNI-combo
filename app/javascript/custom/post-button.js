@@ -24,3 +24,29 @@ document.addEventListener("turbo:load", function () {
     buttonContainer.addEventListener("click", handleButtonClick);
   }
 });
+
+document.addEventListener("turbo:load", function () {
+  const inputComando = document.querySelector(".input-comando");
+  const backButton = document.querySelector(".back-button");
+  const deleteButton = document.querySelector(".delete-button");
+
+  // 一つ戻すボタンのクリックイベントを処理する関数
+  function handleBackButtonClick() {
+    const lastIndexOfArrow = inputComando.value.lastIndexOf(" > ");
+
+    if (lastIndexOfArrow !== -1) {
+      inputComando.value = inputComando.value.slice(0, lastIndexOfArrow);
+    } else {
+      inputComando.value = "";
+    }
+  }
+
+  // すべて消すボタンのクリックイベントを処理する関数
+  function handleDeleteButtonClick() {
+    inputComando.value = "";
+  }
+
+  // ボタンにイベントリスナーを追加
+  backButton.addEventListener("click", handleBackButtonClick);
+  deleteButton.addEventListener("click", handleDeleteButtonClick);
+});

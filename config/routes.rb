@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :combos do
     collection do
       get 'post_ajax'
+      get 'filter_ajax'
     end
   end
 end

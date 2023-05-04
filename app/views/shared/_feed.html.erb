@@ -9,35 +9,12 @@
 <div class="filter-container">
     <button id="open-modal">フィルター</button>
 
-    <div id="filter-modal" class="modal">
-        <div class="modal-content">
-            <%= form_with url: "#", method: "get", id: "character-select-form" do |f| %>
-            <div class="form-group">
-                <%= f.label :character_name, "Character Name:" %>
-                <%= f.collection_select :character_id, Character.order(:character_name), :id, :character_name, { include_blank: "Select a character" }, { class: "form-control", id: "character-select" } %>
-            </div>
-            <% end %>
-            <h3>始動技:</h3>
-            <label><input type="checkbox" class="prefix-filter" value="all"> すべて</label>
-            <label><input type="checkbox" class="prefix-filter" value="JA"> JA</label>
-            <label><input type="checkbox" class="prefix-filter" value="JC"> JC</label>
-
-            <h4>Hit Count 並べ替え:</h4>
-            <label><input type="radio" name="hit_count_sort" value="asc"> 昇順</label>
-            <label><input type="radio" name="hit_count_sort" value="desc"> 降順</label>
-
-            <h4>Damage 並べ替え:</h4>
-            <label><input type="radio" name="damage_sort" value="asc"> 昇順</label>
-            <label><input type="radio" name="damage_sort" value="desc"> 降順</label>
-            <!-- 他のプレフィックスチェックボックスを追加 -->
-            <button id="apply-filters">適用</button>
-            <button id="close-modal">閉じる</button>
-            <button type="button" class="reset-filters-btn" id="reset-filters">リセット</button>
-        </div>
-    </div>
+    <%= render "shared/filter-modal" %>
 </div>
 <span id="selected-options">選択されたオプション: なし</span>
 <% if @combo.any? %>
+    <ol class="microposts">
     <%= render @combo %>
     <%= paginate @combo %>
+    </ol>
 <% end %>

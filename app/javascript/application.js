@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "custom/menu";
 import "custom/filter";
+import "custom/filter-character";
 import "custom/post";
 import "custom/post-button";
 import "custom/video";
