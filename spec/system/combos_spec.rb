@@ -26,9 +26,6 @@ RSpec.describe "Combos", type: :system do
     it "ページネーションが表示されている" do
       expect(page).to have_selector "ul.pagination"
     end
-
-    xit "投稿の中身 後で" do
-    end
   end
 
   describe "投稿ページ" do

@@ -1,25 +1,25 @@
 <div id="filter-modal" class="modal">
         <div class="modal-content">
-            <%= form_with url: "#", method: "get", id: "character-select-form" do |f| %>
-            <div class="form-group">
-                <%= f.label :character_name, "Character Name:" %>
-                <%= f.collection_select :character_id, Character.order(:character_name), :id, :character_name, { include_blank: "Select a character" }, { class: "form-control", id: "character-select" } %>
+            <div class="filter-content">
+                <%= form_with url: "#", method: "get", id: "character-select-form" do |f| %>
+                <div class="form-group">
+                    <%= f.label :character_name, "Character Name:" %>
+                    <%= f.collection_select :character_id, Character.order(:character_name), :id, :character_name, { include_blank: "Select a character" }, { class: "form-control", id: "character-select" } %>
+                </div>
+                <% end %>
+                <h3>始動技:</h3>
+                <div class="common-comando-container"><%= render "filter-comando/common-comando"%></div>
+                <div class="comando-container"></div>
+                <h3>Hit Count 並べ替え:</h3>
+                <label><input type="radio" name="hit_count_sort" value="asc"> 昇順</label>
+                <label><input type="radio" name="hit_count_sort" value="desc"> 降順</label>
+                <h3>Damage 並べ替え:</h3>
+                <label><input type="radio" name="damage_sort" value="asc"> 昇順</label>
+                <label><input type="radio" name="damage_sort" value="desc"> 降順</label>
             </div>
-            <% end %>
-            <h3>始動技:</h3>
-            <%= render "filter-comando/common-comando"%>
-            <div class="comando-container"></div>
 
-            <h4>Hit Count 並べ替え:</h4>
-            <label><input type="radio" name="hit_count_sort" value="asc"> 昇順</label>
-            <label><input type="radio" name="hit_count_sort" value="desc"> 降順</label>
-
-            <h4>Damage 並べ替え:</h4>
-            <label><input type="radio" name="damage_sort" value="asc"> 昇順</label>
-            <label><input type="radio" name="damage_sort" value="desc"> 降順</label>
-
-            <button id="apply-filters">適用</button>
-            <button id="close-modal">閉じる</button>
-            <button type="button" class="reset-filters-btn" id="reset-filters">リセット</button>
+            <button id="apply-filters" class="btn btn-success">適用</button>
+            <button id="close-modal" class="btn btn-secondary">閉じる</button>
+            <button type="button" class="reset-filters-btn btn btn-warning" id="reset-filters">リセット</button>
         </div>
     </div>

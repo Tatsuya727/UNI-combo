@@ -100,6 +100,21 @@ document.addEventListener("turbo:load", function () {
     });
   });
 
+  const comandoContainer = document.querySelector(".comando-container");
+  comandoContainer.addEventListener("turbo:load", function (event) {
+    if (event.target && event.target.matches(".prefix-filter")) {
+      event.target.addEventListener("change", function () {
+        if (this.checked) {
+          prefixCheckboxes.forEach((otherCheckbox) => {
+            if (otherCheckbox !== this) {
+              otherCheckbox.checked = false;
+            }
+          });
+        }
+      });
+    }
+  });
+
   // モーダルを閉じるイベント
   const closeModalButton = document.getElementById("close-modal");
   closeModalButton.addEventListener("click", function () {
@@ -159,7 +174,12 @@ document.addEventListener("turbo:load", function () {
   if (resetFiltersButton) {
     resetFiltersButton.addEventListener("click", function () {
       // チェックボックスをリセット
-      const prefixCheckboxes = document.querySelectorAll(".prefix-filter");
+      const prefixCheckboxes = Array.from(
+        document.getElementsByTagName("input")
+      ).filter(
+        (input) =>
+          input.type === "checkbox" && input.classList.contains("prefix-filter")
+      );
       const situationCheckboxes =
         document.querySelectorAll(".situation-filter");
       prefixCheckboxes.forEach((checkbox) => {
