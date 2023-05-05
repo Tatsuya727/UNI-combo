@@ -70,6 +70,7 @@ RSpec.describe "Sessions", type: :system do
     it "#destroy" do
       visit login_path
       login_in_login_page user
+      visit root_path
       expect(page).to have_link "ログアウト"
     end
   end
