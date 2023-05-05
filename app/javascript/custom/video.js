@@ -1,16 +1,20 @@
-window.addEventListener("turbo:load", function () {
-  document.getElementById("increaseSpeed").addEventListener("click", function () {
-      let video = document.getElementById("video");
-      video.playbackRate = 2;
-    });
+document.addEventListener("turbo:load", () => {
+  const video = document.getElementById("video");
+  const playbackSpeedSelect = document.getElementById("playbackSpeed");
+  const toggleLoopButton = document.getElementById("toggleLoop");
 
-  document.getElementById("decreaseSpeed").addEventListener("click", function () {
-      let video = document.getElementById("video");
-      video.playbackRate = 0.5;
-    });
+  playbackSpeedSelect.addEventListener("change", () => {
+    video.playbackRate = parseFloat(playbackSpeedSelect.value);
+  });
 
-  document.getElementById("toggleLoop").addEventListener("click", function () {
-    let video = document.getElementById("video");
+  toggleLoopButton.addEventListener("click", () => {
     video.loop = !video.loop;
+
+    // ボタンのテキストを更新して、ループが有効かどうかを表示します。
+    if (video.loop) {
+      toggleLoopButton.textContent = "ループ：オン";
+    } else {
+      toggleLoopButton.textContent = "ループ：オフ";
+    }
   });
 });

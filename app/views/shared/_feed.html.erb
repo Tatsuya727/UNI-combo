@@ -10,8 +10,8 @@
     <button class="btn btn-success" id="open-modal">フィルター</button>
 
     <%= render "shared/filter-modal" %>
+    <span id="selected-options">選択されたオプション: なし</span>
 </div>
-<span id="selected-options">選択されたオプション: なし</span>
 <% if @combo.any? %>
     <ol class="microposts">
     <%= render @combo %>

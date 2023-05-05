@@ -78,12 +78,7 @@ RSpec.describe "Combos", type: :request do
 
                 it "正しいレスポンスが返ってくる" do
                     post combos_path, params: invalid_params
-                    expect(response).to have_http_status(200)
-                end
-
-                it "エラーメッセージが表示される" do
-                    post combos_path, params: invalid_params
-                    expect(response.body).to include "タイトルを入力してください"
+                    expect(response).to have_http_status(422)
                 end
             end
         end

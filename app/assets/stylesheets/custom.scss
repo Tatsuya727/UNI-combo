@@ -178,6 +178,13 @@ header{
   }
 }
 
+.filter-container {
+  margin-bottom: 10px;
+  #selected-options {
+    font-weight: bold;
+  }
+}
+
 
 .card {
     margin-top: 100px;
@@ -304,10 +311,16 @@ input {
     color: crimson;
     font-size: 1.3em;
   }
+  .hit_count-int {
+    font-size: 23px;
+  }
   .hit_count {
     margin-left: 10px;
     min-width: 30px;
     text-align: center;
+  }
+  .damage-int {
+    font-size: 23px;
   }
   .damage {
     margin-left: 10px;
@@ -389,37 +402,106 @@ span.image {
 /*show micropost*/
 
 .show-micropost {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
   .title {
-  
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
+
   .comando {
-    background-color: #fff;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
+  .hit_count-int {
+    font-size: 23px;
+  }
+  .damage-int {
+    font-size: 23px;
+  }
+  .hit_count,
+  .damage {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  .situation {
+    margin-left: 10px;
+    min-width: 30px;
+    text-align: center;
+    color: crimson;
+    font-size: 1.3em;
+  }
+
   .video {
-    margin-top: 10px;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
     float: left;
   }
+
+  .video-control {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 300px;
+    select {
+      appearance: none;
+      min-width: 230px;
+      height: 2.8em;
+      padding: .4em calc(.8em + 30px) .4em .8em;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #333333;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button {
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
   .description {
-    margin-top: 10px;
-    font-size: 17px;
+    font-size: 20px;
+    margin: 20px;
   }
-  .video-controls {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    display: flex;
-    gap: 5px;
+
+  .user {
+    font-size: 14px;
   }
-  
-  .video-controls button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    cursor: pointer;
+
+  .timestamp {
+    font-size: 20px;
+    text-align: right;
+    color: #999;
   }
 }
+
+@media (max-width: 767px) {
+  .show-micropost {
+    .video {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
 
 /* post form */
 

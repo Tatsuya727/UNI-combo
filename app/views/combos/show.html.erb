@@ -1,22 +1,31 @@
+<% situations = @combo.situation.gsub(/[\[\]"]/,'').split(', ').map { |situation_id| Situation.find(situation_id.to_i).name } %>
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 show-micropost">
         <h2 class="title"><%= @combo.title %></h2>
         <h3 class="comando"><%= @combo.comando %></h3>
-        <span class="hit_count"><%= @combo.hit_count %></span>
-        <span class="damage"><%= @combo.damage %></span>
-        <% if @combo.video_url.attached? %>
-            <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
-        <% end %>
-        <div class="video-control">
-            <button id="increaseSpeed">2倍速</button>
-            <button id="decreaseSpeed">0.5倍速</button>
-            <button id="toggleLoop">ループ切り替え</button>
-        </div>
+        <span class="situation">
+                <%= situations.join(', ') %>
+        </span>
+        <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
+        <span class="hit_count"><span class="hit_count-int"><%= @combo.hit_count %></span> Hit</span>
+        <span class="damage"><span class="damage-int"><%= @combo.damage %></span> Damage</span><br>
         <span class="description"><%= @combo.description %></span>
-        <span class="situation"><%= Situation.find(@combo.situation.gsub(/[\[\]\"\']/, '').to_i).name %></span>
+        <div class="video-control">
+            <select id="playbackSpeed">
+                <option value="0.25">0.25倍速</option>
+                <option value="0.5">0.5倍速</option>
+                <option value="0.75">0.75倍速</option>
+                <option value="1" selected>1倍速（通常）</option>
+                <option value="1.25">1.25倍速</option>
+                <option value="1.5">1.5倍速</option>
+                <option value="1.75">1.75倍速</option>
+                <option value="2">2倍速</option>
+            </select>
+            <button id="toggleLoop" class="btn btn-primary">ループ：オフ</button>
+        </div>
         <span class="user"><%= link_to @combo.user.name, @combo.user %></span>
         <span class="timestamp">
-            Posted <%= time_ago_in_words(@combo.created_at) %> ago.
+            投稿日 <%= @combo.created_at %>
             <% if current_user?(@combo.user) %>
                 <%= link_to "delete", @combo, data: { "turbo-method": :delete,
                                                         turbo_confirm: "本当に削除しますか?" } %>
