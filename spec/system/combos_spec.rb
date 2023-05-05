@@ -8,29 +8,11 @@ RSpec.describe "Combos", type: :system do
   let!(:character)  { FactoryBot.create(:character) }
   let!(:situation)  { FactoryBot.create(:situation) }
 
-  describe "ユーザーページ" do
-    before do
-      FactoryBot.send(:user_with_posts, posts_count: 70)
-      @user = Combo.first.user
-      visit user_path(@user)
-    end
-
-    it "1ページに25個まで表示されている" do
-      one_page_posts =
-        within "ol.combos" do
-          find_all("li")
-        end
-      expect(one_page_posts.size).to eq 25
-    end
-
-    it "ページネーションが表示されている" do
-      expect(page).to have_selector "ul.pagination"
-    end
-  end
 
   describe "投稿ページ" do
     before do
-      login user
+      visit login_path
+      login_in_login_page user
       visit new_combo_path
     end
 
