@@ -42,6 +42,7 @@ group :test do
   gem "minitest-reporters"
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'simplecov', require: false, group: :test
 end
 
 group :production do

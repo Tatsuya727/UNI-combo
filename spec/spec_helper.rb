@@ -13,6 +13,10 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'simplecov'#追加
+SimpleCov.start    #追加
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test

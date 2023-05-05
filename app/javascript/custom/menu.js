@@ -16,52 +16,54 @@ document.addEventListener("turbo:load", function () {
   });
 });
 
-
 // キャラクタータグのサイドメニュー
-function filterCommands(prefixes) {
-  const listItems = document.querySelectorAll('.microposts li');
-  listItems.forEach(item => {
-    const commandElement = item.querySelector('.comando');
-    const commandText = commandElement.textContent;
-    const commands = commandText.split('>');
-    const hasMatchingPrefix = commands.some(command => prefixes.includes(command));
-    if (hasMatchingPrefix) {
-      item.style.display = 'list-item';
-    } else {
-      item.style.display = 'none';
-    }
+document.addEventListener("turbo:load", function () {
+  let sideMenu = document.getElementById("side-menu");
+  let sideMenuToggle = document.getElementById("side-menu-toggle");
+
+  sideMenuToggle.addEventListener("click", function () {
+    sideMenu.classList.toggle("side-menu-collapsed");
+    sideMenuToggle.innerHTML = sideMenu.classList.contains(
+      "side-menu-collapsed"
+    )
+      ? "&#9658;"
+      : "&#9668;";
   });
+});
+
+// サイドメニューの開閉
+function toggleSideMenu() {
+  const sideMenu = document.getElementById("side-menu");
+  const sideMenuToggle = document.getElementById("side-menu-toggle");
+
+  if (window.innerWidth <= 991) {
+    sideMenu.classList.add("side-menu-collapsed");
+    sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
+  } else {
+    sideMenu.classList.remove("side-menu-collapsed");
+    sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
+  }
 }
 
-document.addEventListener('turbo:load', function() {
-  const applyFiltersButton = document.getElementById('apply-filters');
-  applyFiltersButton.addEventListener('click', function() {
-    const prefixFilterCheckboxes = document.querySelectorAll('.prefix-filter');
-    const checkedPrefixes = Array.from(prefixFilterCheckboxes)
-      .filter(checkbox => checkbox.checked)
-      .map(checkbox => checkbox.value);
-    filterCommands(checkedPrefixes);
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  const sideMenu = document.getElementById("side-menu");
+  const sideMenuToggle = document.getElementById("side-menu-toggle");
+
+  if (sideMenuToggle) {
+    sideMenuToggle.addEventListener("click", function () {
+      sideMenu.classList.toggle("side-menu-collapsed");
+      // アイコンの変更
+      if (sideMenu.classList.contains("side-menu-collapsed")) {
+        sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
+      } else {
+        sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
+      }
+    });
+  }
+
+  // ウィンドウのリサイズイベントを監視
+  window.addEventListener("resize", toggleSideMenu);
+
+  // 初期状態でサイドメニューを折りたたむか展開するかを設定
+  toggleSideMenu();
 });
-
-document.addEventListener('turbo:load', function() {
-  const openModalButton = document.getElementById('open-modal');
-  const closeModalButton = document.getElementById('close-modal');
-  const filterModal = document.getElementById('filter-modal');
-
-  openModalButton.addEventListener('click', function() {
-    filterModal.style.display = 'block';
-  });
-
-  closeModalButton.addEventListener('click', function() {
-    filterModal.style.display = 'none';
-  });
-
-  window.addEventListener('click', function(event) {
-    if (event.target === filterModal) {
-      filterModal.style.display = 'none';
-    }
-  });
-});
-
-

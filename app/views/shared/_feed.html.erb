@@ -4,24 +4,17 @@
 <% else %>
     <h3 class="character-name">ALL Character</h3>
 <% end %>
-    <!-- モーダルを開くボタン -->
-    <button id="open-modal">フィルター</button>
-
-    <!-- モーダルウィンドウ -->
-    <div id="filter-modal" class="modal">
-        <div class="modal-content">
-            <h3>プレフィックスでフィルタリング:</h3>
-            <label><input type="checkbox" class="prefix-filter" value="JA"> JA</label>
-            <label><input type="checkbox" class="prefix-filter" value="JC"> JC</label>
-            <!-- 他のプレフィックスチェックボックスを追加 -->
-            <button id="apply-filters">適用</button>
-            <button id="close-modal">閉じる</button>
-        </div>
-    </div>
-
     <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary combo-post-link"} %>
 </div>
+<div class="filter-container">
+    <button class="btn btn-success" id="open-modal">フィルター</button>
+
+    <%= render "shared/filter-modal" %>
+    <span id="selected-options">選択されたオプション: なし</span>
+</div>
 <% if @combo.any? %>
+    <ol class="microposts">
     <%= render @combo %>
     <%= paginate @combo %>
+    </ol>
 <% end %>

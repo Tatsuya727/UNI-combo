@@ -35,7 +35,6 @@ RSpec.describe "Users", type: :system do
       count = User.count
       click_button "アカウントを作成"
       expect(User.count).to eq (count + 1)
-      #expect(current_path).to eq user_path(User.last)
     end
 
     it "アカウント作成失敗" do
@@ -81,7 +80,6 @@ RSpec.describe "Users", type: :system do
         click_button "プロフィールを変更する"
         expect(page).to have_http_status(422)
         expect(page).to have_content "Name can't be blank"
-        # expect(current_path).to eq edit_user_path(User.last)
       end
     end
   end

@@ -1,62 +1,52 @@
-window.addEventListener("turbo:load", function () {
-  $(document).on("click", ".button-container button", function () {
-    var comando = $(this).text();
-    var input = $(".input-comando");
-    var input_val = input.val();
-    if (input_val == "") {
-      input.val(comando);
-    } else {
-      input.val(input_val + " > " + comando);
+document.addEventListener("turbo:load", function () {
+  const inputComando = document.querySelector(".input-comando");
+  const buttonContainer = document.querySelector(".button-container");
+
+  // ボタンのクリックイベントを処理する関数
+  function handleButtonClick(event) {
+    if (event.target.classList.contains("comando-button")) {
+      // テキストエリアの値が空でない場合、">"を追加
+      const prefix = inputComando.value.length > 0 ? " > " : "";
+
+      // ボタンのテキストをテキストエリアに挿入
+      inputComando.value += prefix + event.target.textContent;
     }
+  }
+
+  // 静的なボタンにイベントリスナーを追加
+  const comandoButtons = document.querySelectorAll(".comando-button");
+  comandoButtons.forEach((button) => {
+    button.addEventListener("click", handleButtonClick);
   });
 
-  $(document).on("click", ".common-comando button", function () {
-    var comando = $(this).text();
-    var input = $(".input-comando");
-    var input_val = input.val();
-    if (input_val == "") {
-      input.val(comando);
-    } else {
-      input.val(input_val + " > " + comando);
-    }
-  });
-
-  // 一つ戻すボタンを押すと、最後のコマンドを消す
-  $(document).on("click", ".system-button button", function () {
-    var input = $(".input-comando");
-    var input_val = input.val();
-    var input_val_array = input_val.split(" > ");
-    if (input_val_array.length > 1) {
-      input_val_array.pop();
-      input.val(input_val_array.join(" > "));
-    }
-  });
-
-  $(document).on("click", ".delete-button", function () {
-    var input = $(".input-comando");
-    input.val("");
-  });
+  // 動的なボタンにイベントリスナーを追加
+  if (buttonContainer) {
+    buttonContainer.addEventListener("click", handleButtonClick);
+  }
 });
 
+document.addEventListener("turbo:load", function () {
+  const inputComando = document.querySelector(".input-comando");
+  const backButton = document.querySelector(".back-button");
+  const deleteButton = document.querySelector(".delete-button");
 
+  // 一つ戻すボタンのクリックイベントを処理する関数
+  function handleBackButtonClick() {
+    const lastIndexOfArrow = inputComando.value.lastIndexOf(" > ");
 
-// 一つ戻すボタンを押すと、最後のコマンドを消す
-window.addEventListener("turbo:load", function () {
-  $(document).on("click", ".system-button button", function () {
-    var input = $(".input-comando");
-    var input_val = input.val();
-    var input_val_array = input_val.split(" > ");
-    if (input_val_array.length > 1) {
-      input_val_array.pop();
-      input.val(input_val_array.join(" > "));
+    if (lastIndexOfArrow !== -1) {
+      inputComando.value = inputComando.value.slice(0, lastIndexOfArrow);
+    } else {
+      inputComando.value = "";
     }
-  });
-});
+  }
 
-// すべて消すボタンを押すと、textareaの中身を消す
-window.addEventListener("turbo:load", function () {
-  $(document).on("click", ".delete-button", function () {
-    var input = $(".input-comando");
-    input.val("");
-  });
+  // すべて消すボタンのクリックイベントを処理する関数
+  function handleDeleteButtonClick() {
+    inputComando.value = "";
+  }
+
+  // ボタンにイベントリスナーを追加
+  backButton.addEventListener("click", handleBackButtonClick);
+  deleteButton.addEventListener("click", handleDeleteButtonClick);
 });
