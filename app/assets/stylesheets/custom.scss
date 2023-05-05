@@ -189,26 +189,20 @@ header{
 .card {
     margin-top: 100px;
     padding: 20px;
-    height: 200px;
+    height: 150px;
     width: 350px;
     background-color: #fff;
     border-radius: 6px;
-
-    .box {
-        float: left;
-        background-color: #222;
-        width: 65px;
-        height: 65px;
-    }
-
     .card-title {
         font-size: 27px;
         margin-left: 20px;
     }
-
-    .btn {
-        margin-left: 10px;
+    .card-body{
+      .btn {
+        margin: 30px 5px;
+      }
     }
+    
 }
 /* キャラクターのレスポンシブ */
 
@@ -284,7 +278,7 @@ input {
 
 /* microposts */
 
-.microposts {
+.microposts, .combos {
   list-style: none;
   padding: 0;
 
