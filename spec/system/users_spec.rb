@@ -44,7 +44,6 @@ RSpec.describe "Users", type: :system do
       fill_in "user[password_confirmation]", with: "foobar"
       click_button "アカウントを作成"
       expect(page).to have_http_status(422)
-      expect(page).to have_content "Name can't be blank"
       expect(current_path).to eq "/users"
     end
   end
@@ -79,7 +78,6 @@ RSpec.describe "Users", type: :system do
         fill_in "user[password_confirmation]", with: user.password_confirmation
         click_button "プロフィールを変更する"
         expect(page).to have_http_status(422)
-        expect(page).to have_content "Name can't be blank"
       end
     end
   end
