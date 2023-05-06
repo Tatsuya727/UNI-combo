@@ -14,9 +14,8 @@ if Rails.env.production?
     end
 else
     CarrierWave.configure do |config|
-        config.root = Rails.root.join('tmp')
-        config.cache_dir = 'carrierwave'
-
+        config.root = Rails.root.join('public')
+        config.cache_dir = 'uploads/tmp'
         config.storage = :file
         config.enable_processing = !Rails.env.test?
     end
