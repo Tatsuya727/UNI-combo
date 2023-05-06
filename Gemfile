@@ -18,6 +18,7 @@ gem "bootstrap-sass"
 gem "faker"
 gem "kaminari"
 gem "bootstrap4-kaminari-views"
+gem "carrierwave"
 # gem "redis", "~> 4.0"
 
 group :development, :test do
