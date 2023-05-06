@@ -3,6 +3,7 @@ class Combo < ApplicationRecord
   belongs_to :character, optional: true
   default_scope -> { order(created_at: :desc) }
   has_one_attached :video_url
+  mount_uploader :video_url, VideoUploader
   validates :title,        presence: true, length: { maximum: 100 }
   validates :comando,      presence: true, length: { maximum: 200 }
   validates :description,  presence: true, length: { maximum: 300 }
