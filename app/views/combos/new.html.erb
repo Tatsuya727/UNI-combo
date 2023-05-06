@@ -1,50 +1,50 @@
 <% provide(:title, "投稿") %>
 
 <div class="row">
-        <%= form_with(model: @combo, local: true, multipart: true, remote: true ) do |f| %>
-        <div class="col-md-5 col-md-offset-1">
-            <%= render "shared/error_messages", object: f.object %>
+    <%= form_with(model: @combo, local: true, multipart: true, remote: true ) do |f| %>
+    <div class="col-md-5 col-md-offset-1">
+        <%= render "shared/error_messages", object: f.object %>
 
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "form-control" %>
-            
-            <%= f.label :character_id %>
-            <%= f.collection_select(:character_id, Character.all, :id, :character_name, { prompt: "選択してください" }, { class: "form-control" }) %>
-            
-            <div class="checkbox-columns">
-                <% Situation.pluck(:name, :id).each do |name, id| %>
-                    <%= check_box_tag "combo[situation][]", id, false, class: "checkbox" %>
-                    <%= label_tag "combo[situation][]", name %>
-                <% end %>
-            </div>
-            
-            <%= f.label :damage %>
-            <%= f.text_field :damage, class: "form-control" %>
-            
-            <%= f.label :hit_count %>
-            <%= f.text_field :hit_count, class: "form-control" %>
-
-            <%= f.label :description %>
-            <%= f.text_area :description, class: "form-control" %>
-
-            <%= f.label :video_url %>
-            <%= f.file_field :video_url, class: "form-control" %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+        
+        <%= f.label :character_id %>
+        <%= f.collection_select(:character_id, Character.all, :id, :character_name, { prompt: "選択してください" }, { class: "form-control" }) %>
+        
+        <div class="checkbox-columns">
+            <% Situation.pluck(:name, :id).each do |name, id| %>
+                <%= check_box_tag "combo[situation][]", id, false, class: "checkbox" %>
+                <%= label_tag "combo[situation][]", name %>
+            <% end %>
         </div>
-        <div class="col-md-5">        
-            <%= f.label :comando %>
-            <%= f.text_area :comando, class: "input-comando", placeholder: "コマンドとコマンドの間には > を入力してください。" %>
-            <div class="btn-field">
-                <div class="system-button">
-                    <button type="button" class="back-button">一つ戻す</button>
-                    <button type="button" class="delete-button">すべて消す</button>
-                </div>
-                <div class="btn-title">共通コマンド</div>
-                <div class="common-comando"><%= render "post-comando/common-comando" %></div>
-                <div class="btn-title">キャラクターコマンド</div>
-                <div class="button-container"></div>
+        
+        <%= f.label :damage %>
+        <%= f.text_field :damage, class: "form-control" %>
+        
+        <%= f.label :hit_count %>
+        <%= f.text_field :hit_count, class: "form-control" %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+
+        <%= f.label :video_url %>
+        <%= f.file_field :video_url, class: "form-control" %>
+    </div>
+    <div class="col-md-5">        
+        <%= f.label :comando %>
+        <%= f.text_area :comando, class: "input-comando", placeholder: "コマンドとコマンドの間には > を入力してください。" %>
+        <div class="btn-field">
+            <div class="system-button">
+                <button type="button" class="back-button">一つ戻す</button>
+                <button type="button" class="delete-button">すべて消す</button>
             </div>
-            
-            <%= f.submit "投稿する", class: "btn btn-primary" %>
+            <div class="btn-title">共通コマンド</div>
+            <div class="common-comando"><%= render "post-comando/common-comando" %></div>
+            <div class="btn-title">キャラクターコマンド</div>
+            <div class="button-container"></div>
         </div>
-        <% end %>
+        
+        <%= f.submit "投稿する", class: "btn btn-primary" %>
+    </div>
+    <% end %>
 </div>

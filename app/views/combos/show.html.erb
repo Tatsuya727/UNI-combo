@@ -6,7 +6,7 @@
         <span class="situation">
                 <%= situations.join(', ') %>
         </span>
-        <%= video_tag rails_blob_path(@combo.video_url), autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
+        <%= video_tag @combo.video_url.url, autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
         <span class="hit_count"><span class="hit_count-int"><%= @combo.hit_count %></span> Hit</span>
         <span class="damage"><span class="damage-int"><%= @combo.damage %></span> Damage</span><br>
         <span class="description"><%= @combo.description %></span>
