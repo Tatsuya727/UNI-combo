@@ -20,6 +20,7 @@ gem "kaminari"
 gem "bootstrap4-kaminari-views"
 gem "carrierwave"
 gem 'fog-aws'
+gem 'aws-sdk-s3', require: false
 # gem "redis", "~> 4.0"
 
 group :development, :test do
@@ -48,6 +49,5 @@ group :test do
 end
 
 group :production do
-  gem 'aws-sdk-s3', require: false
   gem "pg"
 end
