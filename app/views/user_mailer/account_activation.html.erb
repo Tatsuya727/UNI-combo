@@ -3,18 +3,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <style>
+        .mail-body {
+            border: 1px solid #000;
+            text-align: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 500px;
+        }
         </style>
     </head>
 
     <body>
-        <h1>Uni combo</h1>
-
-        <p>こんにちは、<%= @user.name %>さん。</p>
-
-        <p>
-        以下のリンクをクリックしてアカウントを有効化してください：
-        </p>
-
-        <%= link_to "アカウントを有効化", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+        <div class="mail-body">
+            <h1>Uni combo</h1>
+            <p>Hi <%= @user.name %>,</p>
+            <p>
+            Click on the link below to activate your account:
+            </p>
+            <%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+        </div>
     </body>
 </html>
