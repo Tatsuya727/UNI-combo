@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  let!(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:token) { "sample_token" }
   describe "account_activation" do
-    let(:mail) { UserMailer.account_activation(user) }
+    let(:mail) { UserMailer.account_activation(user, token) }
 
     it "正しいタイトル" do
       expect(mail.subject).to eq ("仮登録完了のお知らせ")
@@ -18,7 +19,8 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Uni combo")
+      expect(mail.body.encoded).to include(user.activation_token)
+      expect(mail.body.encoded).to include(CGI.escape(user.email))
     end
   end
 
