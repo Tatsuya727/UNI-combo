@@ -1,4 +1,5 @@
 <% situations = combo.situation.gsub(/[\[\]"]/,'').split(', ').map { |situation_id| Situation.find(situation_id.to_i).name } %>
+<% character  = Character.find(combo.character_id).character_name %>
 <li class="post" id="post-combo-<%= combo.id %>" data-situation="<%= situations.join(',').strip %>">
         <div class="post-head">
             <span class="situation">
@@ -8,8 +9,13 @@
             <span class="damage"><span class="damage-int"><%= combo.damage %></span> Damage</span>
         </div>
     <%= link_to combo_path(combo), data: { turbo_frame: "combo" } do %>
-        <span class="title"><%= combo.title %></span>
-        <span class="comando"><%= combo.comando %></span>
-        <span class="user"><%= link_to combo.user.name, combo.user, class: "user-link" %></span>
+        <div class="post-main">
+            <span class="title"><%= combo.title %></span>
+            <span class="comando"><%= combo.comando %></span>
+        </div>
+        <div class="post-bottom">
+            <span class="character"><%= character %></span>
+            <%= link_to combo.user.name, combo.user, class: "user-link" %>
+        </div>
     <% end %>
 </li>
