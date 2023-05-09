@@ -48,7 +48,7 @@ class User < ApplicationRecord
     end
 
     def send_activation_email # 有効化用のメールを送信する
-        UserMailer.account_activation(self).deliver_now
+        UserMailer.account_activation(self, self.activation_token).deliver_now
     end
 
     def create_reset_digest # パスワード再設定用のトークンを発行し保存する

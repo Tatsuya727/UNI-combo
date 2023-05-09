@@ -5,8 +5,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.account_activation.subject
   #
-  def account_activation(user)
+  def account_activation(user, activation_token)
     @user = user
+    @activation_token = activation_token
     mail to: user.email, subject: "仮登録完了のお知らせ"
   end
 

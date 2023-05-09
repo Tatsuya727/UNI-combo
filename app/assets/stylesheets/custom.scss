@@ -292,62 +292,67 @@ input {
   }
 }
 
-.post-head {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-
-  .situation {
-    margin-left: 10px;
-    min-width: 30px;
-    text-align: center;
-    color: crimson;
-    font-size: 1.3em;
+.post {
+  &-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    .situation {
+      margin-left: 10px;
+      min-width: 30px;
+      text-align: center;
+      color: crimson;
+      font-size: 1.3em;
+    }
+    .hit_count-int {
+      font-size: 23px;
+    }
+    .hit_count {
+      margin-left: 10px;
+      min-width: 30px;
+      text-align: center;
+    }
+    .damage-int {
+      font-size: 23px;
+    }
+    .damage {
+      margin-left: 10px;
+      min-width: 30px;
+      text-align: center;
+    }
   }
-  .hit_count-int {
-    font-size: 23px;
+  &-main {
+    .title {
+      display: block;
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      float: left;
+      color: #222;
+    }
+    .comando {
+      display: block;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      clear: both;
+      color: #222;
+    }
   }
-  .hit_count {
-    margin-left: 10px;
-    min-width: 30px;
-    text-align: center;
-  }
-  .damage-int {
-    font-size: 23px;
-  }
-  .damage {
-    margin-left: 10px;
-    min-width: 30px;
-    text-align: center;
-  }
-}
-
-
-.title {
-  display: block;
-  font-size: 1.8em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  float: left;
-  color: #222;
-}
-
-.comando {
-  display: block;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  clear: both;
-  color: #222;
-}
-
-.user {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-
-  .user-link {
-    text-decoration: none;
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    .user-link {
+      text-decoration: none;
+      display: inline-block;
+      text-align: left;
+    }
+    .character {
+      display: inline-block;
+      text-align: right;
+      color: #001aff;
+      font-weight: bold;
+    }
   }
 }
 

@@ -1,10 +1,20 @@
-<h1>Uni combo</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style>
+        </style>
+    </head>
 
-<p>Hi <%= @user.name %>,</p>
+    <body>
+        <h1>Uni combo</h1>
 
-<p>
-Welcome to the Uni combo! Click on the link below to activate your account:
-</p>
+        <p>こんにちは、<%= @user.name %>さん。</p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
-                                                    email: @user.email) %>
+        <p>
+        以下のリンクをクリックしてアカウントを有効化してください：
+        </p>
+
+        <%= link_to "アカウントを有効化", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+    </body>
+</html>
