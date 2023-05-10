@@ -9,11 +9,13 @@ document.addEventListener("turbo:load", function () {
   });
 
   let account = document.querySelector("#account");
-  account.addEventListener("click", function (event) {
-    event.preventDefault();
-    let menu = document.querySelector("#dropdown-menu");
-    menu.classList.toggle("active");
-  });
+  if (account) {
+    account.addEventListener("click", function (event) {
+      event.preventDefault();
+      let menu = document.querySelector("#dropdown-menu");
+      menu.classList.toggle("active");
+    });
+  }
 });
 
 // キャラクタータグのサイドメニュー
@@ -21,14 +23,16 @@ document.addEventListener("turbo:load", function () {
   let sideMenu = document.getElementById("side-menu");
   let sideMenuToggle = document.getElementById("side-menu-toggle");
 
-  sideMenuToggle.addEventListener("click", function () {
-    sideMenu.classList.toggle("side-menu-collapsed");
-    sideMenuToggle.innerHTML = sideMenu.classList.contains(
-      "side-menu-collapsed"
-    )
-      ? "&#9658;"
-      : "&#9668;";
-  });
+  if (sideMenu) {
+    sideMenuToggle.addEventListener("click", function () {
+      sideMenu.classList.toggle("side-menu-collapsed");
+      sideMenuToggle.innerHTML = sideMenu.classList.contains(
+        "side-menu-collapsed"
+      )
+        ? "&#9658;"
+        : "&#9668;";
+    });
+  }
 });
 
 // サイドメニューの開閉
@@ -36,12 +40,14 @@ function toggleSideMenu() {
   const sideMenu = document.getElementById("side-menu");
   const sideMenuToggle = document.getElementById("side-menu-toggle");
 
-  if (window.innerWidth <= 991) {
-    sideMenu.classList.add("side-menu-collapsed");
-    sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
-  } else {
-    sideMenu.classList.remove("side-menu-collapsed");
-    sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
+  if (sideMenu) {
+    if (window.innerWidth <= 991) {
+      sideMenu.classList.add("side-menu-collapsed");
+      sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
+    } else {
+      sideMenu.classList.remove("side-menu-collapsed");
+      sideMenuToggle.innerHTML = "&#9654;"; // 右矢印
+    }
   }
 }
 

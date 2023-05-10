@@ -47,6 +47,8 @@ document.addEventListener("turbo:load", function () {
   }
 
   // ボタンにイベントリスナーを追加
-  backButton.addEventListener("click", handleBackButtonClick);
-  deleteButton.addEventListener("click", handleDeleteButtonClick);
+  if (inputComando) {
+    backButton.addEventListener("click", handleBackButtonClick);
+    deleteButton.addEventListener("click", handleDeleteButtonClick);
+  }
 });
