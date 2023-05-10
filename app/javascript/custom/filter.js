@@ -73,9 +73,6 @@ document.addEventListener("turbo:load", function () {
     const selectedPrefixes = getSelectedPrefixes();
     filterCommands(selectedPrefixes);
 
-    const selectedSituations = getSelectedSituations();
-    filterPostsBySituation(selectedSituations);
-
     const hitCountOrder = getSelectedRadioValue(hitCountRadios);
     const damageOrder = getSelectedRadioValue(damageRadios);
 
