@@ -69,67 +69,72 @@ document.addEventListener("turbo:load", function () {
   const hitCountRadios = document.getElementsByName("hit_count_sort");
   const damageRadios = document.getElementsByName("damage_sort");
 
-  applyFiltersButton.addEventListener("click", function () {
-    const selectedPrefixes = getSelectedPrefixes();
-    filterCommands(selectedPrefixes);
+  if (applyFiltersButton) {
+    applyFiltersButton.addEventListener("click", function () {
+      const selectedPrefixes = getSelectedPrefixes();
+      filterCommands(selectedPrefixes);
 
-    const hitCountOrder = getSelectedRadioValue(hitCountRadios);
-    const damageOrder = getSelectedRadioValue(damageRadios);
+      const hitCountOrder = getSelectedRadioValue(hitCountRadios);
+      const damageOrder = getSelectedRadioValue(damageRadios);
 
-    if (hitCountOrder) {
-      sortPosts("hit_count", hitCountOrder);
-    } else if (damageOrder) {
-      sortPosts("damage", damageOrder);
-    }
-  });
-
-  // 始動技を1つだけ選択可能にする
-  const prefixCheckboxes = document.querySelectorAll(".prefix-filter");
-  prefixCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-      if (checkbox.checked) {
-        prefixCheckboxes.forEach((otherCheckbox) => {
-          if (otherCheckbox !== checkbox) {
-            otherCheckbox.checked = false;
-          }
-        });
+      if (hitCountOrder) {
+        sortPosts("hit_count", hitCountOrder);
+      } else if (damageOrder) {
+        sortPosts("damage", damageOrder);
       }
     });
-  });
 
-  const comandoContainer = document.querySelector(".comando-container");
-  comandoContainer.addEventListener("turbo:load", function (event) {
-    if (event.target && event.target.matches(".prefix-filter")) {
-      event.target.addEventListener("change", function () {
-        if (this.checked) {
+    // 始動技を1つだけ選択可能にする
+    const prefixCheckboxes = document.querySelectorAll(".prefix-filter");
+    prefixCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
           prefixCheckboxes.forEach((otherCheckbox) => {
-            if (otherCheckbox !== this) {
+            if (otherCheckbox !== checkbox) {
               otherCheckbox.checked = false;
             }
           });
         }
       });
-    }
-  });
+    });
 
-  // モーダルを閉じるイベント
-  const closeModalButton = document.getElementById("close-modal");
-  closeModalButton.addEventListener("click", function () {
-    const modal = document.getElementById("filter-modal");
-    modal.style.display = "none";
-  });
+    const comandoContainer = document.querySelector(".comando-container");
+    comandoContainer.addEventListener("turbo:load", function (event) {
+      if (event.target && event.target.matches(".prefix-filter")) {
+        event.target.addEventListener("change", function () {
+          if (this.checked) {
+            prefixCheckboxes.forEach((otherCheckbox) => {
+              if (otherCheckbox !== this) {
+                otherCheckbox.checked = false;
+              }
+            });
+          }
+        });
+      }
+    });
+
+    // モーダルを閉じるイベント
+    const closeModalButton = document.getElementById("close-modal");
+    closeModalButton.addEventListener("click", function () {
+      const modal = document.getElementById("filter-modal");
+      modal.style.display = "none";
+    });
+  }
 });
 
 //  フィルタリングのみ適用する
 document.addEventListener("turbo:load", function () {
   const applyFiltersButton = document.getElementById("apply-filters");
-  applyFiltersButton.addEventListener("click", function () {
-    const prefixFilterCheckboxes = document.querySelectorAll(".prefix-filter");
-    const checkedPrefixes = Array.from(prefixFilterCheckboxes)
-      .filter((checkbox) => checkbox.checked)
-      .map((checkbox) => checkbox.value);
-    filterCommands(checkedPrefixes);
-  });
+  if (applyFiltersButton) {
+    applyFiltersButton.addEventListener("click", function () {
+      const prefixFilterCheckboxes =
+        document.querySelectorAll(".prefix-filter");
+      const checkedPrefixes = Array.from(prefixFilterCheckboxes)
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => checkbox.value);
+      filterCommands(checkedPrefixes);
+    });
+  }
 });
 
 //  並べ替えのみ適用する
@@ -138,13 +143,17 @@ document.addEventListener("turbo:load", function () {
   const closeModalButton = document.getElementById("close-modal");
   const filterModal = document.getElementById("filter-modal");
 
-  openModalButton.addEventListener("click", function () {
-    filterModal.style.display = "block";
-  });
+  if (openModalButton) {
+    openModalButton.addEventListener("click", function () {
+      filterModal.style.display = "block";
+    });
+  }
 
-  closeModalButton.addEventListener("click", function () {
-    filterModal.style.display = "none";
-  });
+  if (closeModalButton) {
+    closeModalButton.addEventListener("click", function () {
+      filterModal.style.display = "none";
+    });
+  }
 
   window.addEventListener("click", function (event) {
     if (event.target === filterModal) {
@@ -153,7 +162,7 @@ document.addEventListener("turbo:load", function () {
   });
 });
 
-// ここで、選択されたキャラクターに応じてチェックボックスを変更する処理を実装します。
+// 選択されたキャラクターに応じてチェックボックスを変更する
 document.addEventListener("turbo:load", function () {
   const characterSelect = document.getElementById("character-select");
 
@@ -206,27 +215,25 @@ document.addEventListener("turbo:load", function () {
 });
 
 document.addEventListener("turbo:load", function () {
-  // モーダル内の選択肢（例えば、チェックボックスやラジオボタン）を取得します。
+  // モーダル内の選択肢を取得
   var modalOptions = document.querySelectorAll(
     '#filter-modal input[type="checkbox"], #filter-modal input[type="radio"]'
   );
 
-  // 選択されたオプションを表示する要素を取得します。
+  // 選択されたオプションを表示する要素を取得
   var selectedOptionsElement = document.getElementById("selected-options");
 
-  // 選択肢が選択されたときに呼ばれる関数を定義します。
   function updateSelectedOptions() {
-    // 選択された選択肢のテキストを格納する配列を作成します。
     var selectedOptions = [];
 
-    // 選択されている選択肢を取得します。
+    // 選択されている選択肢を取得
     modalOptions.forEach(function (option) {
       if (option.checked || option.selected) {
         selectedOptions.push(option.parentElement.textContent.trim());
       }
     });
 
-    // 選択された選択肢を表示する要素にテキストを設定します。
+    // 選択された選択肢を表示する要素にテキストを設定
     if (selectedOptions.length > 0) {
       selectedOptionsElement.textContent =
         "選択されたオプション: " + selectedOptions.join(", ");
@@ -235,15 +242,16 @@ document.addEventListener("turbo:load", function () {
     }
   }
 
-  // モーダル内のすべての選択肢に対してイベントリスナーを追加します。
+  // モーダル内のすべての選択肢に対してイベントリスナーを追加
   modalOptions.forEach(function (option) {
     option.addEventListener("change", updateSelectedOptions);
   });
 
-  // 適用ボタンにイベントリスナーを追加します。
+  // 適用ボタンにイベントリスナーを追加
   var applyFiltersButton = document.getElementById("apply-filters");
-  applyFiltersButton.addEventListener("click", function () {
-    updateSelectedOptions();
-    // ここでモーダルを閉じるコードを実行します。
-  });
+  if (applyFiltersButton) {
+    applyFiltersButton.addEventListener("click", function () {
+      updateSelectedOptions();
+    });
+  }
 });
