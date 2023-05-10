@@ -11,7 +11,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "正しい送信元" do
-      expect(mail.from).to eq (["user@noreply.com"])
+      expect(mail.from).to eq (["noreply@unicombohub.com"])
     end
 
     it "正しい送信先" do
@@ -35,7 +35,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
     
     it "正しい送信元" do
-      expect(mail.from).to eq (["user@noreply.com"])
+      expect(mail.from).to eq (["noreply@unicombohub.com"])
     end
     
     it "正しい送信先" do

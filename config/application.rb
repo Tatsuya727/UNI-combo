@@ -14,17 +14,6 @@ module UNICombo
     #追加
     config.autoload_paths += %W(#{config.root}/app/uploaders)
     config.active_storage.service = :local
-    config.action_mailer.default_url_options = { host: 'https://unicombohub.com/' }
-
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address: 'email-smtp.ap-northeast-1.amazonaws.com',
-      port: 587,
-      user_name: ENV['SES_SMTP_USERNAME'],
-      password: ENV['SES_SMTP_PASSWORD'],
-      authentication: :login,
-      enable_starttls_auto: true
-    }
 
 
     # Configuration for the application, engines, and railties goes here.
