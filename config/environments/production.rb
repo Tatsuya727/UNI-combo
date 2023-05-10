@@ -70,14 +70,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp # 追加
   host = 'unicombohub.com'
   config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => 'smtp.mailgun.org',
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => host,
-    :authentication => :plain,
-    enable_starttls_auto: true
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.ap-northeast-1.amazonaws.com',
+    port: 587,
+    user_name: ENV['SES_SMTP_USERNAME'],
+    password: ENV['SES_SMTP_PASSWORD'],
+    authentication: :login,
+    enable_starttls_auto: true,
+    domain: host
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
