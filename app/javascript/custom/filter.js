@@ -98,19 +98,17 @@ document.addEventListener("turbo:load", function () {
       });
     });
 
-    const comandoContainer = document.querySelector(".comando-container");
-    comandoContainer.addEventListener("turbo:load", function (event) {
-      if (event.target && event.target.matches(".prefix-filter")) {
-        event.target.addEventListener("change", function () {
-          if (this.checked) {
-            prefixCheckboxes.forEach((otherCheckbox) => {
-              if (otherCheckbox !== this) {
-                otherCheckbox.checked = false;
-              }
-            });
-          }
-        });
-      }
+    const commandoButtons = document.querySelector(".comando-button");
+    commandoButtons.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          commandoButtons.forEach((otherCheckbox) => {
+            if (otherCheckbox !== checkbox) {
+              otherCheckbox.checked = false;
+            }
+          });
+        }
+      });
     });
 
     // モーダルを閉じるイベント
@@ -160,17 +158,6 @@ document.addEventListener("turbo:load", function () {
       filterModal.style.display = "none";
     }
   });
-});
-
-// 選択されたキャラクターに応じてチェックボックスを変更する
-document.addEventListener("turbo:load", function () {
-  const characterSelect = document.getElementById("character-select");
-
-  if (characterSelect) {
-    characterSelect.addEventListener("change", function () {
-      const selectedCharacterId = this.value;
-    });
-  }
 });
 
 // リセットボタンを押したときに、フィルターと並べ替えをリセットする
