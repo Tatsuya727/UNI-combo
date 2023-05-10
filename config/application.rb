@@ -14,7 +14,6 @@ module UNICombo
     #追加
     config.autoload_paths += %W(#{config.root}/app/uploaders)
     config.active_storage.service = :local
-    config.action_mailer.default_url_options = { host: 'https://unicombohub.com/' }
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
