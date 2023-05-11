@@ -21,9 +21,9 @@ RSpec.describe "AccountActivations", type: :request do
             expect(is_logged_in?).to be_truthy
         end
 
-        it "ユーザ詳細ページにリダイレクトすること" do
+        it "rootにリダイレクトすること" do
             get edit_account_activation_path(@user.activation_token, email: @user.email)
-            expect(response).to redirect_to user_path(@user)
+            expect(response).to redirect_to root_path(@user)
         end
     end
 
