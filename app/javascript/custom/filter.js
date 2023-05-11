@@ -99,17 +99,19 @@ document.addEventListener("turbo:load", function () {
     });
 
     const commandoButtons = document.querySelector(".comando-button");
-    commandoButtons.forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (checkbox.checked) {
-          commandoButtons.forEach((otherCheckbox) => {
-            if (otherCheckbox !== checkbox) {
-              otherCheckbox.checked = false;
-            }
-          });
-        }
+    if (ciommandoButtons) {
+      commandoButtons.forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          if (checkbox.checked) {
+            commandoButtons.forEach((otherCheckbox) => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.checked = false;
+              }
+            });
+          }
+        });
       });
-    });
+    }
 
     // モーダルを閉じるイベント
     const closeModalButton = document.getElementById("close-modal");
