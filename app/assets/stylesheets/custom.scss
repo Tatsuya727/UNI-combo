@@ -57,10 +57,10 @@ header{
 .top-left {
   .side-menu {
     position: fixed;
-    margin-top: -30px;
+    margin-top: -40px;
     left: 0;
     transition: all 0.3s ease;
-    background-color: #000;
+    background-color: #222;
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
@@ -107,7 +107,7 @@ header{
   cursor: pointer;
   color: #fff;
   font-size: 1.5em;
-  background-color: #000;
+  background-color: #222;
   padding: 5px;
 }
 
@@ -204,7 +204,7 @@ header{
     }
     
 }
-/* キャラクターのレスポンシブ */
+/* キャラクター レスポンシブ */
 
 @media (max-width: 991.98px) {
   .row {
@@ -262,13 +262,37 @@ input {
     }
 }
 
-.checkbox {
-    margin-top: -10px;
-    margin-bottom: 10px;
-    span {
-        margin-left: 20px;
-        font-weight: normal;
-    }
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+
+.checkbox-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  .checkbox {
+    display: inline-block;
+    width: 200px;
+    height: 10px;
+  }
+  .checkbox-columns label {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: -10px;
+    width: 50%;
+  }
+}
+
+
+span.image {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
 }
 
 #session_remember_me {
@@ -358,46 +382,6 @@ input {
 
 
 
-  
-  aside {
-    textarea {
-      height: 100px;
-      margin-bottom: 5px;
-    }
-  }
-  
-
-  .checkbox-columns {
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-  }
-  
-  .checkbox-columns label {
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: -10px;
-    width: 50%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
-
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-span.image {
-  margin-top: 10px;
-  input {
-    border: 0;
-  }
-}
-
 /*show micropost*/
 
 .show-micropost {
@@ -405,13 +389,11 @@ span.image {
   background-color: #f8f9fa;
   border-radius: 10px;
   margin-bottom: 20px;
-
   .title {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 10px;
   }
-
   .comando {
     font-size: 24px;
     margin-bottom: 10px;
@@ -435,23 +417,19 @@ span.image {
     color: crimson;
     font-size: 1.3em;
   }
-
   .video {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
-    float: left;
   }
-
   .video-control {
     text-align: center;
     margin-bottom: 10px;
-    width: 300px;
     select {
       appearance: none;
-      min-width: 230px;
+      width: 230px;
       height: 2.8em;
       padding: .4em calc(.8em + 30px) .4em .8em;
       border: 1px solid #cccccc;
@@ -469,22 +447,20 @@ span.image {
       border-radius: 5px;
       cursor: pointer;
       margin-right: 5px;
-
       &:hover {
         background-color: #0056b3;
       }
     }
   }
-
   .description {
+    text-align: center;
     font-size: 20px;
+    display: block;
     margin: 20px;
   }
-
   .user {
     font-size: 14px;
   }
-
   .timestamp {
     font-size: 20px;
     text-align: right;

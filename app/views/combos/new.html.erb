@@ -13,8 +13,10 @@
         
         <div class="checkbox-columns">
             <% Situation.pluck(:name, :id).each do |name, id| %>
-                <%= check_box_tag "combo[situation][]", id, false, class: "checkbox" %>
-                <%= label_tag "combo[situation][]", name %>
+                <div>
+                    <%= check_box_tag "combo[situation][]", id, false, class: "checkbox" %>
+                    <%= label_tag "combo[situation][]", name %>
+                </div>
             <% end %>
         </div>
         
