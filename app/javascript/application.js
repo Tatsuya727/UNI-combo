@@ -8,4 +8,5 @@ import "custom/post";
 import "custom/post-button";
 import "custom/video";
 import jquery from "jquery";
+import "@fortawesome/fontawesome-free";
 window.$ = jquery;

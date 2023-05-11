@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :combo, dependent: :destroy
     has_many :likes
-    has_many :likeed_combos, through: :likes, source: :combo
+    has_many :liked_combos, through: :likes, source: :combo
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save   :downcase_email
     before_create :create_activation_digest
@@ -73,6 +73,14 @@ class User < ApplicationRecord
 
     def feed_all
         Combo.all
+    end
+
+    def liked?(combo)
+        likes.exists?(combo_id: combo.id)
+    end
+
+    def find_like(combo)
+        likes.find_by(combo_id: combo.id)
     end
 
     private

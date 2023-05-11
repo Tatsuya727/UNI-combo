@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :combos do
-    resource :likes, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
     collection do
       get 'post_ajax'
       get 'filter_ajax'

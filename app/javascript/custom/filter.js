@@ -99,7 +99,7 @@ document.addEventListener("turbo:load", function () {
     });
 
     const commandoButtons = document.querySelector(".comando-button");
-    if (ciommandoButtons) {
+    if (commandoButtons) {
       commandoButtons.forEach((checkbox) => {
         checkbox.addEventListener("change", function () {
           if (checkbox.checked) {
