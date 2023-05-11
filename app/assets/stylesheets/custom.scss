@@ -371,9 +371,22 @@ aside {
   border-radius: 10px;
   margin-bottom: 20px;
   .title {
+    display: flex;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+  .likes {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    p {
+      position: relative;
+      top : 5px;
+      left: 9px;
+      color: #ff0000;
+      font-size: 30px;
+    }
   }
   .comando {
     font-size: 24px;
