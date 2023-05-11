@@ -35,11 +35,7 @@ class CombosController < ApplicationController
     def destroy
         @combo.destroy
         flash[:success] = "削除しました"
-        if request.referrer.nil?
-            redirect_to root_url, status: :see_other
-        else
-            redirect_to request.referrer, status: :see_other
-        end
+        redirect_to root_url, status: :see_other
     end
 
     def post_ajax

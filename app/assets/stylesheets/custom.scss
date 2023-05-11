@@ -276,7 +276,6 @@ aside {
 .microposts, .combos {
   list-style: none;
   padding: 0;
-
   li {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -284,6 +283,17 @@ aside {
     margin-bottom: 15px;
     padding: 20px;
     position: relative;
+  }
+  .likes {
+    a {
+      color: #e74c3c;
+      &:hover {
+        color: #c0392b;
+      }
+    }
+    p {
+      margin: 0;
+    }
   }
 }
 
@@ -428,6 +438,7 @@ aside {
     font-size: 20px;
     display: block;
     margin: 20px;
+    width: 100%;
   }
   .user {
     font-size: 14px;
