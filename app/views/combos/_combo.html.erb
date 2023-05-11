@@ -19,14 +19,19 @@
         </div>
     <% end %>
     <div class="likes">
-        <% if current_user.liked? combo %>
+        <% if logged_in? && current_user.liked?(combo) %>
             <p><%= combo.likes.count %></p>
             <%= link_to combo_like_path(combo, current_user.likes.find_by(combo_id: combo.id)), data: { "turbo-method": :delete } do %>
                 <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000;"></i>
             <% end %>
-        <% else %>
+        <% elsif logged_in? %>
             <p><%= combo.likes.count %></p>
             <%= link_to combo_likes_path(combo), data: { "turbo-method": :post } do %>
+                <i class="fa-regular fa-heart fa-2xl"></i>
+            <% end %>
+        <% else %>
+            <p><%= combo.likes.count %></p>
+            <%= link_to login_path do %>
                 <i class="fa-regular fa-heart fa-2xl"></i>
             <% end %>
         <% end %>

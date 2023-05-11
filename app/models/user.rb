@@ -83,6 +83,10 @@ class User < ApplicationRecord
         likes.find_by(combo_id: combo.id)
     end
 
+    def liked_combos
+        Combo.joins(:likes).where(likes: {user_id: self.id})
+    end
+
     private
 
         def downcase_email
