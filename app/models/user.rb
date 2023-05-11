@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_many :combo, dependent: :destroy
+    has_many :likes
+    has_many :likeed_combos, through: :likes, source: :combo
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save   :downcase_email
     before_create :create_activation_digest
