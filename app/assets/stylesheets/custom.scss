@@ -111,9 +111,6 @@ header{
   padding: 5px;
 }
 
-
-
-
 .title-container {
   display: flex;
   justify-content: space-between;
@@ -266,32 +263,6 @@ aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
-  }
-}
-
-
-.checkbox-columns {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  .checkbox {
-    display: inline-block;
-    width: 200px;
-    height: 10px;
-  }
-  .checkbox-columns label {
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: -10px;
-    width: 50%;
-  }
-}
-
-
-span.image {
-  margin-top: 10px;
-  input {
-    border: 0;
   }
 }
 
@@ -528,7 +499,29 @@ span.image {
   .common-comando {
     margin-bottom: 15px;
   }
-  .button-container {
-    
+}
+
+.checkbox-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  .checkbox {
+    display: inline-block;
+    width: 200px;
+    height: 10px;
+  }
+  .checkbox-columns label {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: -10px;
+    width: 50%;
   }
 }
+
+span.image {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
