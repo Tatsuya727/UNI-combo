@@ -1,24 +1,26 @@
-# README
+# UNI COMBO
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[UNI COMBO](https://unicombohub.com/) はアンダーナイトインヴァース（通称　 UNI）という格闘ゲームのコンボ動画を共有するための Web アプリケーションです。ユーザーが自分のコンボ動画をアップロードし、他のユーザーと共有することができます。
 
-Things you may want to cover:
+URL: https://unicombohub.com/
 
-* Ruby version
+# 機能
 
-* System dependencies
+- 動画の投稿
 
-* Configuration
+- 投稿された動画を探しやすくするためのフィルター機能
 
-* Database creation
+- 投稿の評価機能(いいね機能)
 
-* Database initialization
+- 投稿時のコマンド入力の簡易化(入力したい内容をボタンを押すことで入力し、長いコンボでも簡単に投稿できるように)
 
-* How to run the test suite
+- 動画のループ、スピード変更（コンボを練習しやすいように動画をスローにしたり、ループすることができます。)
 
-* Services (job queues, cache servers, search engines, etc.)
+# 使用技術
 
-* Deployment instructions
-
-* ...
+- Ruby: 2.7
+- Rails: 7
+- デプロイ: [Render.com](https://render.com/)
+- 動画保存: AWS S3
+- メール機能: AWS SES
+- ドメイン管理: AWS Route 53
