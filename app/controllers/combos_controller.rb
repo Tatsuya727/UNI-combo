@@ -26,7 +26,6 @@ class CombosController < ApplicationController
             flash[:success] = "投稿完了"
             redirect_to root_url
         else
-            @feed_items = current_user.feed.page(params[:page])
             render "new", status: :unprocessable_entity
         end
     end
