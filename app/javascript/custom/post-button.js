@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function () {
+function attachCommandButtonListeners() {
   const inputComando = document.querySelector(".input-comando");
   const buttonContainer = document.querySelector(".button-container");
 
@@ -23,9 +23,11 @@ document.addEventListener("turbo:load", function () {
   if (buttonContainer) {
     buttonContainer.addEventListener("click", handleButtonClick);
   }
-});
+}
 
-document.addEventListener("turbo:load", function () {
+document.addEventListener("turbo:load", attachCommandButtonListeners);
+document.addEventListener("turbo:render", attachCommandButtonListeners);
+function attachBackDeleteButtonListeners() {
   const inputComando = document.querySelector(".input-comando");
   const backButton = document.querySelector(".back-button");
   const deleteButton = document.querySelector(".delete-button");
@@ -51,4 +53,7 @@ document.addEventListener("turbo:load", function () {
     backButton.addEventListener("click", handleBackButtonClick);
     deleteButton.addEventListener("click", handleDeleteButtonClick);
   }
-});
+}
+
+document.addEventListener("turbo:load", attachBackDeleteButtonListeners);
+document.addEventListener("turbo:render", attachBackDeleteButtonListeners);
