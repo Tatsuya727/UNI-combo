@@ -68,6 +68,7 @@ document.addEventListener("turbo:load", function () {
   const applyFiltersButton = document.getElementById("apply-filters");
   const hitCountRadios = document.getElementsByName("hit_count_sort");
   const damageRadios = document.getElementsByName("damage_sort");
+  const likesRadios = document.getElementsByName("likes_sort");
 
   if (applyFiltersButton) {
     applyFiltersButton.addEventListener("click", function () {
@@ -76,11 +77,14 @@ document.addEventListener("turbo:load", function () {
 
       const hitCountOrder = getSelectedRadioValue(hitCountRadios);
       const damageOrder = getSelectedRadioValue(damageRadios);
+      const likesOrder = getSelectedRadioValue(likesRadios);
 
       if (hitCountOrder) {
         sortPosts("hit_count", hitCountOrder);
       } else if (damageOrder) {
         sortPosts("damage", damageOrder);
+      } else if (likesOrder) {
+        sortPosts("likes-count", likesOrder);
       }
     });
 
@@ -187,10 +191,14 @@ document.addEventListener("turbo:load", function () {
       // ラジオボタンをリセット
       const hitCountRadios = document.getElementsByName("hit_count_sort");
       const damageRadios = document.getElementsByName("damage_sort");
+      const likesRadios = document.getElementsByName("likes_sort");
       hitCountRadios.forEach((radio) => {
         radio.checked = false;
       });
       damageRadios.forEach((radio) => {
+        radio.checked = false;
+      });
+      likesRadios.forEach((radio) => {
         radio.checked = false;
       });
 
@@ -203,26 +211,23 @@ document.addEventListener("turbo:load", function () {
   }
 });
 
+// キャラクターによってコマンドを表示する
 document.addEventListener("turbo:load", function () {
-  // モーダル内の選択肢を取得
   var modalOptions = document.querySelectorAll(
     '#filter-modal input[type="checkbox"], #filter-modal input[type="radio"]'
   );
 
-  // 選択されたオプションを表示する要素を取得
   var selectedOptionsElement = document.getElementById("selected-options");
 
   function updateSelectedOptions() {
     var selectedOptions = [];
 
-    // 選択されている選択肢を取得
     modalOptions.forEach(function (option) {
       if (option.checked || option.selected) {
         selectedOptions.push(option.parentElement.textContent.trim());
       }
     });
 
-    // 選択された選択肢を表示する要素にテキストを設定
     if (selectedOptions.length > 0) {
       selectedOptionsElement.textContent =
         "選択されたオプション: " + selectedOptions.join(", ");
@@ -231,12 +236,10 @@ document.addEventListener("turbo:load", function () {
     }
   }
 
-  // モーダル内のすべての選択肢に対してイベントリスナーを追加
   modalOptions.forEach(function (option) {
     option.addEventListener("change", updateSelectedOptions);
   });
 
-  // 適用ボタンにイベントリスナーを追加
   var applyFiltersButton = document.getElementById("apply-filters");
   if (applyFiltersButton) {
     applyFiltersButton.addEventListener("click", function () {
