@@ -10,19 +10,19 @@
     </div>
     <div class="col-lg-3">
         <div class="card user-card">
-            <div class="card-body">
-                <% if logged_in? %>
-                    <div class="card-title"><%= current_user.name %></div>
-                    <div class="card-body">
-                        <%= link_to "マイページ", current_user, {class: "btn btn-primary"} %>
-                        <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete }, class: "btn btn-danger" %>
-                    </div>
-                <% else %>
-                    <div class="card-title">ゲスト</div>
-                    <%= link_to "新規登録", signup_path, {class: "btn btn-primary"} %>
-                    <%= link_to "ログイン", login_path, {class: "btn btn-primary"} %>
-                <% end %>
-            </div>
+            <% if logged_in? %>
+                <div class="card-title"><%= current_user.name %></div>
+                <div class="card-body">
+                    <div class="post-count">投稿数: <%= current_user.combo.count %></div>
+                    <div class="like-count">いいねした投稿: <%= current_user.liked_combos.count %></div>
+                    <%= link_to "マイページ", current_user, {class: "btn btn-primary"} %>
+                    <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete }, class: "btn btn-danger" %>
+                </div>
+            <% else %>
+                <div class="card-title">ゲスト</div>
+                <%= link_to "新規登録", signup_path, {class: "btn btn-primary"} %>
+                <%= link_to "ログイン", login_path, {class: "btn btn-primary"} %>
+            <% end %>
         </div>
     </div>
 </div>

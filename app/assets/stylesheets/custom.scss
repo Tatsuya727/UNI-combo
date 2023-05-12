@@ -27,7 +27,6 @@ h1 {
 
 header{
     height: 60px;
-    
     #logo {
         float: left;
         margin-right: 10px;
@@ -38,7 +37,6 @@ header{
         padding-top: 9px;
         font-weight: bold;
     }
-    
     #logo:hover {
         color: #fff;
         text-decoration: none;
@@ -49,6 +47,10 @@ header{
 
 .dropdown-menu.active {
     display: block;
+}
+
+.navbar-collapse {
+  background-color: #222;
 }
 
 
@@ -184,43 +186,51 @@ header{
 
 
 .card {
-    margin-top: 100px;
-    padding: 20px;
-    height: 150px;
-    width: 350px;
-    background-color: #fff;
-    border-radius: 6px;
-    .card-title {
-        font-size: 27px;
-        margin-left: 20px;
+  margin-top: 100px;
+  padding: 20px;
+  height: 200px;
+  width: 350px;
+  background-color: #fff;
+  border-radius: 6px;
+  .card-title {
+    font-size: 27px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  .card-body{
+    .post-count {
+      font-size: 20px;
+      margin-left: 20px;
     }
-    .card-body{
-      .btn {
-        margin: 30px 5px;
-      }
+    .like-count {
+      font-size: 20px;
+      margin-left: 20px;
     }
-    
+    .btn {
+      margin: 30px 20px;
+    }
+  }
 }
-/* キャラクター レスポンシブ */
+/* トップ レスポンシブ */
 
 @media (max-width: 991.98px) {
   .row {
     position: relative;
   }
-
   .col-12 {
     padding-right: 60px;
   }
-
   .combo-post-link {
     position: absolute;
     top: 0;
     right: 15px;
     z-index: 100;
   }
-
   .user-card {
     display: none;
+  }
+  #side-menu {
+    
   }
 }
 
@@ -559,3 +569,53 @@ span.image {
   }
 }
 
+/* user show */
+
+.user-page {
+  .user-page-card {
+    margin: 30px 0 30px 40px;
+    padding: 20px;
+    height: 250px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 6px;
+    .card-title {
+      font-size: 27px;
+      margin-left: 5px;
+      margin-bottom: 10px;
+    }
+    .card-body{
+      .post-count {
+        font-size: 20px;
+        margin-left: 20px;
+      }
+      .like-count {
+        font-size: 20px;
+        margin-left: 20px;
+      }
+    }
+    .card-bottom {
+      margin-top: 30px;
+      a {
+        margin: 5px;
+      }
+    }
+  }
+
+  .tab-content {
+    p {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 50px;
+    }
+  }
+}
+
+@media (max-width: 1550px) {
+  .user-page {
+    .user-page-card {
+      margin: 0 0 30px 0;
+      width: 100%;
+    }
+  }
+}
