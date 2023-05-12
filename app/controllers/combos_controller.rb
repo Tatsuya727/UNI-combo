@@ -1,6 +1,7 @@
 class CombosController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :new]
     before_action :correct_user,   only: [:destroy]
+    before_action :set_characters, only: [:index, :show]
 
     def index
         if params[:character_id].present?
@@ -9,12 +10,10 @@ class CombosController < ApplicationController
         else
             @combo = Combo.all.page(params[:page])
         end
-        @characters = Character.all
     end
 
     def show
         @combo      = Combo.find(params[:id])
-        @characters = Character.all
     end
     
     def new
@@ -55,5 +54,9 @@ class CombosController < ApplicationController
         def correct_user
             @combo = current_user.combo.find_by(id: params[:id])
             redirect_to root_url, status: :see_other if @combo.nil?
+        end
+
+        def set_characters
+            @characters = Character.all
         end
 end
