@@ -285,6 +285,11 @@ aside {
     position: relative;
   }
   .likes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-direction: row;
     a {
       color: #e74c3c;
       &:hover {
@@ -292,7 +297,10 @@ aside {
       }
     }
     p {
-      margin: 0;
+      position: relative;
+      top : 5px;
+      color: #ff0000;
+      font-size: 30px;
     }
   }
 }
@@ -371,13 +379,15 @@ aside {
   border-radius: 10px;
   margin-bottom: 20px;
   .title {
-    display: flex;
+    display: inline-flex;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 10px;
+    float: left;
   }
   .likes {
     display: flex;
+    width: auto;
     flex-direction: row-reverse;
     align-items: baseline;
     p {
