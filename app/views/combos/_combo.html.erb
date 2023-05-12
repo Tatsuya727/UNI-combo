@@ -1,13 +1,13 @@
 <% situations = combo.situation.gsub(/[\[\]"]/,'').split(', ').map { |situation_id| Situation.find(situation_id.to_i).name } %>
 <% character  = Character.find(combo.character_id).character_name %>
 <li class="post" id="post-combo-<%= combo.id %>" data-situation="<%= situations.join(',').strip %>">
-        <div class="post-head">
-            <span class="situation">
-                <%= situations.join(', ') %>
-            </span>
-            <span class="hit_count"><span class="hit_count-int"><%= combo.hit_count %></span> Hit</span>
-            <span class="damage"><span class="damage-int"><%= combo.damage %></span> Damage</span>
-        </div>
+    <div class="post-head">
+        <span class="situation">
+            <%= situations.join(', ') %>
+        </span>
+        <span class="hit_count"><span class="hit_count-int"><%= combo.hit_count %></span> Hit</span>
+        <span class="damage"><span class="damage-int"><%= combo.damage %></span> Damage</span>
+    </div>
     <%= link_to combo_path(combo), data: { turbo_frame: "combo" } do %>
         <div class="post-main">
             <span class="title"><%= combo.title %></span>
@@ -18,4 +18,22 @@
             <%= link_to combo.user.name, combo.user, class: "user-link" %>
         </div>
     <% end %>
+    <div class="likes">
+        <% if logged_in? && current_user.liked?(combo) %>
+            <p class="likes-count"><%= combo.likes.count %></p>
+            <%= link_to combo_like_path(combo, current_user.likes.find_by(combo_id: combo.id)), data: { "turbo-method": :delete } do %>
+                <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000;"></i>
+            <% end %>
+        <% elsif logged_in? %>
+            <p class="likes-count"><%= combo.likes.count %></p>
+            <%= link_to combo_likes_path(combo), data: { "turbo-method": :post } do %>
+                <i class="fa-regular fa-heart fa-2xl"></i>
+            <% end %>
+        <% else %>
+            <p class="likes-count"><%= combo.likes.count %></p>
+            <%= link_to login_path do %>
+                <i class="fa-regular fa-heart fa-2xl"></i>
+            <% end %>
+        <% end %>
+    </div>
 </li>

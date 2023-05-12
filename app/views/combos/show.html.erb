@@ -2,6 +2,24 @@
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 show-micropost">
         <h2 class="title"><%= @combo.title %></h2>
+        <div class="likes">
+            <% if logged_in? && current_user.liked?(@combo) %>
+                <p><%= @combo.likes.count %></p>
+                <%= link_to combo_like_path(@combo, current_user.likes.find_by(combo_id: @combo.id)), data: { "turbo-method": :delete } do %>
+                    <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000;"></i>
+                <% end %>
+            <% elsif logged_in? %>
+                <p><%= @combo.likes.count %></p>
+                <%= link_to combo_likes_path(@combo), data: { "turbo-method": :post } do %>
+                    <i class="fa-regular fa-heart fa-2xl"></i>
+                <% end %>
+            <% else %>
+                <p><%= @combo.likes.count %></p>
+                <%= link_to login_path do %>
+                    <i class="fa-regular fa-heart fa-2xl"></i>
+                <% end %>
+            <% end %>
+        </div>
         <h3 class="comando"><%= @combo.comando %></h3>
         <div>
             <span class="situation">

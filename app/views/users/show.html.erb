@@ -6,16 +6,36 @@
     </h1>
     </section>
 </aside>
+
 <div class="row">
     <div class="col-lg-8 col-md-offset-2">
-        <% if @user.combo.any? %>
-            <h3>投稿 (<%= @user.combo.count %>)</h3>
-            <ol class="combos">
-                <%= render @combos %>
-            </ol>
-            <%= paginate @combos %>
-        <% else %>
-            <p>投稿はありません。</p>
-        <% end %>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#posts">投稿</a></li>
+          <li><a data-toggle="tab" href="#likes">いいね</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="posts" class="tab-pane fade in active">
+            <% if @user.combo.any? %>
+                <h3>投稿 (<%= @user.combo.count %>)</h3>
+                <ol class="combos">
+                    <%= render @combos %>
+                </ol>
+                <%= paginate @combos %>
+            <% else %>
+                <p>投稿はありません。</p>
+            <% end %>
+          </div>
+          <div id="likes" class="tab-pane fade">
+            <% if @user.liked_combos.any? %>
+                <h3>いいねした投稿 (<%= @user.liked_combos.count %>)</h3>
+                <ol class="combos">
+                    <%= render @user.liked_combos %>
+                </ol>
+            <% else %>
+                <p>いいねした投稿はありません。</p>
+            <% end %>
+          </div>
+        </div>
     </div>
 </div>

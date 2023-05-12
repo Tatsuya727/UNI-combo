@@ -276,7 +276,6 @@ aside {
 .microposts, .combos {
   list-style: none;
   padding: 0;
-
   li {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -284,6 +283,25 @@ aside {
     margin-bottom: 15px;
     padding: 20px;
     position: relative;
+  }
+  .likes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-direction: row;
+    a {
+      color: #e74c3c;
+      &:hover {
+        color: #c0392b;
+      }
+    }
+    p {
+      position: relative;
+      top : 5px;
+      color: #ff0000;
+      font-size: 30px;
+    }
   }
 }
 
@@ -361,9 +379,24 @@ aside {
   border-radius: 10px;
   margin-bottom: 20px;
   .title {
+    display: inline-flex;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 10px;
+    float: left;
+  }
+  .likes {
+    display: flex;
+    width: auto;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    p {
+      position: relative;
+      top : 5px;
+      left: 9px;
+      color: #ff0000;
+      font-size: 30px;
+    }
   }
   .comando {
     font-size: 24px;
@@ -428,6 +461,7 @@ aside {
     font-size: 20px;
     display: block;
     margin: 20px;
+    width: 100%;
   }
   .user {
     font-size: 14px;
