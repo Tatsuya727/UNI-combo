@@ -1,41 +1,47 @@
 <% provide(:title, @user.name) %>
-<aside class="col-md-4 col-md-offset-3">
-    <section class="user_info">
-    <h1>
-        <%= @user.name %>
-    </h1>
-    </section>
-</aside>
-
-<div class="row">
-    <div class="col-lg-8 col-md-offset-2">
+<div class="row user-page">
+    <div class="col-lg-3">
+        <div class="user-page-card">
+            <div class="card-title"><%= @user.name %></div>
+            <div class="card-body">
+                <div class="post-count">投稿数: <%= @user.combo.count %></div>
+                <div class="like-count">いいねした投稿: <%= @user.liked_combos.count %></div>
+            </div>
+            <div class="card-bottom">
+                <%= link_to "コンボを投稿する", new_combo_path, {class: "btn btn-primary"} %>
+                <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete }, class: "btn btn-danger" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#posts">投稿</a></li>
-          <li><a data-toggle="tab" href="#likes">いいね</a></li>
+            <li class="active"><a data-toggle="tab" href="#posts">投稿</a></li>
+            <li><a data-toggle="tab" href="#likes">いいね</a></li>
         </ul>
 
         <div class="tab-content">
-          <div id="posts" class="tab-pane fade in active">
-            <% if @user.combo.any? %>
-                <h3>投稿 (<%= @user.combo.count %>)</h3>
-                <ol class="combos">
-                    <%= render @combos %>
-                </ol>
-                <%= paginate @combos %>
-            <% else %>
-                <p>投稿はありません。</p>
-            <% end %>
-          </div>
-          <div id="likes" class="tab-pane fade">
-            <% if @user.liked_combos.any? %>
-                <h3>いいねした投稿 (<%= @user.liked_combos.count %>)</h3>
-                <ol class="combos">
-                    <%= render @user.liked_combos %>
-                </ol>
-            <% else %>
-                <p>いいねした投稿はありません。</p>
-            <% end %>
-          </div>
+            <div id="posts" class="tab-pane fade in active">
+                <% if @user.combo.any? %>
+                    <h3>投稿 (<%= @user.combo.count %>)</h3>
+                    <ol class="combos">
+                        <%= render @combos %>
+                    </ol>
+                    <%= paginate @combos %>
+                <% else %>
+                    <p>投稿はありません</p>
+                <% end %>
+            </div>
+
+            <div id="likes" class="tab-pane fade">
+                <% if @user.liked_combos.any? %>
+                    <h3>いいねした投稿 (<%= @user.liked_combos.count %>)</h3>
+                    <ol class="combos">
+                        <%= render @user.liked_combos %>
+                    </ol>
+                <% else %>
+                    <p>いいねした投稿はありません</p>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

@@ -1,5 +1,4 @@
 // ヘッダーのドロップダウンメニュー
-
 document.addEventListener("turbo:load", function () {
   let hamburger = document.querySelector("#hamburger");
   hamburger.addEventListener("click", function (event) {
@@ -41,7 +40,7 @@ function toggleSideMenu() {
   const sideMenuToggle = document.getElementById("side-menu-toggle");
 
   if (sideMenu) {
-    if (window.innerWidth <= 991) {
+    if (window.innerWidth <= 1500) {
       sideMenu.classList.add("side-menu-collapsed");
       sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
     } else {
@@ -58,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (sideMenuToggle) {
     sideMenuToggle.addEventListener("click", function () {
       sideMenu.classList.toggle("side-menu-collapsed");
-      // アイコンの変更
       if (sideMenu.classList.contains("side-menu-collapsed")) {
         sideMenuToggle.innerHTML = "&#9776;"; // ハンバーガーアイコン
       } else {
