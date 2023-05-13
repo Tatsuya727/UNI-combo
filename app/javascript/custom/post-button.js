@@ -25,8 +25,22 @@ function attachCommandButtonListeners() {
   }
 }
 
-document.addEventListener("turbo:load", attachCommandButtonListeners);
-document.addEventListener("turbo:render", attachCommandButtonListeners);
+function loadHandler() {
+  attachCommandButtonListeners();
+}
+
+function renderHandler() {
+  document.removeEventListener("turbo:load", loadHandler); // ロードイベントのリスナーを削除
+  attachCommandButtonListeners();
+  setTimeout(function () {
+    // 少し遅延させてロードイベントのリスナーを再登録
+    document.addEventListener("turbo:load", loadHandler);
+  }, 0);
+}
+
+document.addEventListener("turbo:load", loadHandler);
+document.addEventListener("turbo:render", renderHandler);
+
 function attachBackDeleteButtonListeners() {
   const inputComando = document.querySelector(".input-comando");
   const backButton = document.querySelector(".back-button");
