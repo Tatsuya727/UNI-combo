@@ -1,9 +1,9 @@
-<% situations = combo.situation.gsub(/[\[\]"]/,'').split(', ').map { |situation_id| Situation.find(situation_id.to_i).name } %>
+<% situations = combo.situation.gsub(/[\[\]"]/,'').split(', ').map { |situation_id| Situation.find(situation_id.to_i).name } if combo.situation %>
 <% character  = Character.find(combo.character_id).character_name %>
 <li class="post" id="post-combo-<%= combo.id %>" data-situation="<%= situations.join(',').strip %>">
     <div class="post-head">
         <span class="situation">
-            <%= situations.join(', ') %>
+            <%= situations.join(', ') if situations%>
         </span>
         <span class="hit_count"><span class="hit_count-int"><%= combo.hit_count %></span> Hit</span>
         <span class="damage"><span class="damage-int"><%= combo.damage %></span> Damage</span>
