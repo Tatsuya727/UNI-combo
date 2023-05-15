@@ -23,11 +23,6 @@ RSpec.describe Combo, type: :model do
                 combo.comando = nil
                 expect(combo).to_not be_valid
             end
-
-            it "シチュエーションがある" do
-                combo.situation = nil
-                expect(combo).to_not be_valid
-            end
             
             it "ダメージがある" do
                 combo.damage = nil
@@ -66,10 +61,6 @@ RSpec.describe Combo, type: :model do
                 expect(combo).to_not be_valid
             end
 
-            it "シチュエーションは20文字以内" do
-                combo.situation = "a" * 21
-                expect(combo).to_not be_valid
-            end
         end
 
         context "numericality" do

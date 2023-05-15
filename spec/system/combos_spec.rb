@@ -23,8 +23,11 @@ RSpec.describe "Combos", type: :system do
       fill_in "combo[hit_count]",   with: 1
       fill_in "combo[comando]",     with: "comando"
       fill_in "combo[description]", with: "description"
+      attach_file("combo[video_url]", "#{Rails.root}/spec/fixtures/files/sample.mp4")
       click_button "投稿する"
       change(Combo, :count).by 1
+
+      expect(page).to have_content "投稿完了"
     end
 
     it "投稿に失敗する" do
@@ -34,8 +37,11 @@ RSpec.describe "Combos", type: :system do
       fill_in "combo[hit_count]",   with: ""
       fill_in "combo[comando]",     with: ""
       fill_in "combo[description]", with: ""
+      attach_file("combo[video_url]", "#{Rails.root}/spec/fixtures/files/sample.mp4")
       click_button "投稿する"
       change(Combo, :count).by 0
+      
+      expect(page).to have_content "入力しなければならない欄"
     end
   end
 end

@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
         @combo   = Combo.find(params[:combo_id])
         @comment = Comment.find(params[:id])
         @comment.destroy
+        flash[:success] = "コメントを削除しました"
         redirect_to combo_path(@combo)
     end
 
