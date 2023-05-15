@@ -448,6 +448,23 @@ aside {
     border: #222;
     textarea {
       width: 100%;
+      margin-bottom: 20px;
+    }
+    input {
+      margin-bottom: 20px;
+    }
+    .show-comment {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      h3 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: solid 1px #ccc;
+      }
+      .media {
+        border-bottom: solid 1px #ccc;
+        padding-bottom: 20px;
+      }
     }
   }
   .video-container {

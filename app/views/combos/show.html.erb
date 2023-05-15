@@ -49,12 +49,20 @@
                 <div class="description"><%= @combo.description %></div>
             </div>
             <div class="comment col-lg-5">
+                <div class="show-comment">
+                    <h3>コメント</h3>
+                    <% @combo.comments.each do |comment|%>
+                        <div class="media mb-3">
+                            <div class="media-body">
+                                <h5 class="mt-0"><%= comment.user.name %> <small><i><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></i></small></h5>
+                                <p><%= comment.body %></p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
                 <%= form_with(model: [ @combo, Comment.new ], local: true) do |f|%>
-                    <%= f.text_area :body, class: "", placeholder: "comment..." %>
+                    <%= f.text_area :body, class: "form-control", placeholder: "comment..." %>
                     <%= f.submit "コメントを投稿", class: "btn btn-success" %>
-                <% end %>
-                <% @combo.comments.each do |comment|%>
-                    <p><%= comment.body %></p>
                 <% end %>
             </div>
         </div>
