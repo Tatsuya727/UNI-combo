@@ -57,6 +57,10 @@
                                 <h5 class="mt-0"><%= comment.user.name %> <small><i><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></i></small></h5>
                                 <p><%= comment.body %></p>
                             </div>
+                            <% if current_user?(comment.user) %>
+                                <%= link_to "delete", combo_path(@combo), data: { "turbo-method": :delete,
+                                                                        turbo_confirm: "本当に削除しますか？" } %>
+                            <% end %>
                         </div>
                     <% end %>
                 </div>
