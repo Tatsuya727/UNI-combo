@@ -58,7 +58,7 @@
                                 <p><%= comment.body %></p>
                             </div>
                             <% if current_user?(comment.user) %>
-                                <%= link_to "delete", combo_path(@combo), data: { "turbo-method": :delete,
+                                <%= link_to "delete", combo_comment_path(@combo, comment), data: { "turbo-method": :delete,
                                                                         turbo_confirm: "本当に削除しますか？" } %>
                             <% end %>
                         </div>

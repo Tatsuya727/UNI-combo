@@ -13,6 +13,13 @@ class CommentsController < ApplicationController
         end
     end
 
+    def destroy
+        @combo   = Combo.find(params[:combo_id])
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        redirect_to combo_path(@combo)
+    end
+
     private
 
     def comment_params
