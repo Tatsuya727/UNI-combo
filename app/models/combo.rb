@@ -3,6 +3,7 @@ class Combo < ApplicationRecord
   belongs_to :character, optional: true
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
+  has_many :comments, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   has_one_attached :video_url
   mount_uploader :video_url, VideoUploader
