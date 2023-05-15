@@ -38,7 +38,7 @@ RSpec.describe "Combos", type: :request do
             it "投稿できない" do
                 expect {
                     post combos_path, params: valid_params, xhr: true
-                }.to_not change(Combo, :count).by(1)
+                }.to_not change(Combo, :count)
             end
 
             it "ログインページにリダイレクト" do
