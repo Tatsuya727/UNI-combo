@@ -587,15 +587,10 @@ aside {
   -webkit-columns: 2;
   -moz-columns: 2;
   .checkbox {
-    display: inline-block;
-    width: 200px;
-    height: 10px;
+    position: relative;
+    top: 33px;
   }
-  .checkbox-columns label {
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: -10px;
-    width: 50%;
+  label {
   }
 }
 
