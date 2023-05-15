@@ -2,7 +2,7 @@
 
 <div class="row">
     <%= form_with(model: @combo, local: true, multipart: true, remote: true ) do |f| %>
-    <div class="col-lg-5 col-lg-offset-1">
+    <div class="col-lg-5 col-lg-offset-1 post-new">
         <%= render "shared/error_messages", object: f.object %>
 
         <%= f.label :title %>
@@ -32,7 +32,7 @@
         <%= f.label :video_url %>
         <%= f.file_field :video_url, class: "form-control" %>
     </div>
-    <div class="col-lg-5">        
+    <div class="col-lg-5 post-new">        
         <%= f.label :comando %>
         <%= f.text_area :comando, class: "input-comando", placeholder: "コマンドとコマンドの間には > を入力してください。" %>
         <div class="btn-field">

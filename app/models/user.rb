@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many      :combo, dependent: :destroy
     has_many      :likes, dependent: :destroy
     has_many      :liked_combos, through: :likes, source: :combo
+    has_many      :comments, dependent: :destroy
     before_create :create_activation_digest
     before_save   :downcase_email
     validates     :name,     presence: true, length: { maximum: 50}

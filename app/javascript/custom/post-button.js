@@ -14,8 +14,8 @@ function attachCommandButtonListeners() {
   }
 
   // 静的なボタンにイベントリスナーを追加
-  const comandoButtons = document.querySelectorAll(".comando-button");
-  comandoButtons.forEach((button) => {
+  const commandoButtons = document.querySelectorAll(".comando-button");
+  commandoButtons.forEach((button) => {
     button.addEventListener("click", handleButtonClick);
   });
 
