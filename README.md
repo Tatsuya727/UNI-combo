@@ -28,7 +28,7 @@ URL: https://unicombohub.com/
 - メール機能: AWS SES
 - ドメイン管理: AWS Route 53
 
-# ER 図
+# ER図
 
 ![picture 1](images/36dd197b71edb6240990f2d9162605e9e54907ba886a82b3f88434bda43548ff.png)
 
