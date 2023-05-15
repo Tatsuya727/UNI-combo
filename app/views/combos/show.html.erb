@@ -20,36 +20,53 @@
                 <% end %>
             <% end %>
         </div>
-        <h3 class="comando"><%= @combo.comando %></h3>
+        <h3 class="commando"><%= @combo.comando %></h3>
         <div>
             <span class="situation">
-                    <%= situations.join(', ') if situations %>
+                <%= situations.join(', ') if situations %>
             </span>
             <span class="hit_count"><span class="hit_count-int"><%= @combo.hit_count %></span> Hit</span>
             <span class="damage"><span class="damage-int"><%= @combo.damage %></span> Damage</span>
         </div>
-        <%= video_tag @combo.video_url.url, autoplay: false, muted: false, controls: true, height: "65%", width: "60%", class: "video", id: "video" %>
-        <div class="video-control">
-            <select id="playbackSpeed">
-                <option value="0.25">0.25倍速</option>
-                <option value="0.5">0.5倍速</option>
-                <option value="0.75">0.75倍速</option>
-                <option value="1" selected>1倍速（通常）</option>
-                <option value="1.25">1.25倍速</option>
-                <option value="1.5">1.5倍速</option>
-                <option value="1.75">1.75倍速</option>
-                <option value="2">2倍速</option>
-            </select>
-            <button id="toggleLoop" class="btn btn-primary">ループ：オフ</button>
+        <div class="micropost-body">
+            <div class="body-left col-lg-7">
+                <div class="video-container">
+                    <%= video_tag @combo.video_url.url, autoplay: false, muted: false, controls: true, height: "65%", width: "100%", class: "video", id: "video" %>
+                    <div class="video-control">
+                        <select id="playbackSpeed">
+                            <option value="0.25">0.25倍速</option>
+                            <option value="0.5">0.5倍速</option>
+                            <option value="0.75">0.75倍速</option>
+                            <option value="1" selected>1倍速（通常）</option>
+                            <option value="1.25">1.25倍速</option>
+                            <option value="1.5">1.5倍速</option>
+                            <option value="1.75">1.75倍速</option>
+                            <option value="2">2倍速</option>
+                        </select>
+                        <button id="toggleLoop" class="btn btn-primary">ループ：オフ</button>
+                    </div>
+                </div>
+                <div class="description"><%= @combo.description %></div>
+            </div>
+            <div class="comment col-lg-5">
+                <%= form_with(model: [ @combo, Comment.new ], local: true) do |f|%>
+                    <%= f.text_area :body, class: "", placeholder: "comment..." %>
+                    <%= f.submit "コメントを投稿", class: "btn btn-success" %>
+                <% end %>
+                <% @combo.comments.each do |comment|%>
+                    <p><%= comment.body %></p>
+                <% end %>
+            </div>
         </div>
-        <div class="description"><%= @combo.description %></div>
-        <span class="user"><%= link_to @combo.user.name, @combo.user %></span>
-        <span class="timestamp">
-            投稿日 <%= @combo.created_at %>
-            <% if current_user?(@combo.user) %>
-                <%= link_to "delete", @combo, data: { "turbo-method": :delete,
-                                                        turbo_confirm: "本当に削除しますか?" } %>
-            <% end %>
-        </span>
+        <div class="col-lg-12">
+            <span class="user"><%= link_to @combo.user.name, @combo.user %></span>
+            <span class="timestamp">
+                投稿日 <%= @combo.created_at %>
+                <% if current_user?(@combo.user) %>
+                    <%= link_to "delete", @combo, data: { "turbo-method": :delete,
+                                                            turbo_confirm: "本当に削除しますか?" } %>
+                <% end %>
+            </span>
+        </div>
     </div>
 </div>
