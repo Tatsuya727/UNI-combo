@@ -158,6 +158,7 @@ header{
     font-weight: bold;
   }
   label{
+    margin-top: 10px;
     padding-left: 20px;
   }
   input {
@@ -235,7 +236,7 @@ header{
 }
 
 /* forms */
-.post-new {
+.post-new,.login-form,.modal-content,.signup-form {
   input, textarea {
     border: 1px solid #bbb;
     width: 100%;
