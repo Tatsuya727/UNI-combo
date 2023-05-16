@@ -36,7 +36,15 @@ describe "Combos API", type: :request do
         end
     
         context "リクエストが有効な場合" do
-            before { post "/api/v1/combos", params: valid_params }
+            before do
+                #認証トークンの取得
+                get "/api/v1/authenticate", params: { email: user.email, password: user.password }
+                @auth_token = JSON.parse(response.body)["auth_token"]
+                #認証トークンをヘッダーに付与
+                @headers = { "Authorization" => @auth_token }
+                #リクエスト
+                post "/api/v1/combos", params: valid_params, headers: @headers
+            end
     
             it "comboが作成される" do
                 expect(response).to have_http_status(201)
