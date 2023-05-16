@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Combos", type: :request do
-    let!(:user)  { FactoryBot.create(:user) }
+    let(:combo)       { FactoryBot.create(:combo) }
+    let!(:user)       { FactoryBot.create(:user) }
     let!(:situations) { create_list(:situation, 3) }
-    let(:combo)  { FactoryBot.create(:combo) }
     
     describe "#create" do
         let(:valid_params) do
