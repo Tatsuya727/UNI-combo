@@ -22,10 +22,10 @@ gem "carrierwave"
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
 gem 'rack-cors'
+gem "pg"
 # gem "redis", "~> 4.0"
 
 group :development, :test do
-  gem "pg"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -50,5 +50,4 @@ group :test do
 end
 
 group :production do
-  gem "pg"
 end
