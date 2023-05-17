@@ -21,10 +21,11 @@ gem "bootstrap4-kaminari-views"
 gem "carrierwave"
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
+gem 'rack-cors'
 # gem "redis", "~> 4.0"
 
 group :development, :test do
-  gem "sqlite3"
+  gem "pg"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 

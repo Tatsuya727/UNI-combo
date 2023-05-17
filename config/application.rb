@@ -15,6 +15,15 @@ module UNICombo
     config.autoload_paths += %W(#{config.root}/app/uploaders)
     config.active_storage.service = :local
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "localhost:3000", "unicombohub.com"
+
+        resource "*",
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
