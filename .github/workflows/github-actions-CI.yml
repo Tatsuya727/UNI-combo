@@ -1,46 +1,33 @@
 name: run rspec
-# This workflow is triggered on pushes to the repository.
 on: [push]
 
 jobs:
-  build:
-    # Job name is Greeting
-    name: verify
-    # This job runs on Linux
+  test:
     runs-on: ubuntu-latest
+
     services:
-      postgres:
-        image: postgres:12
-        ports:
-          - 5432:5432
+      db:
+        image: postgres
         env:
+          POSTGRES_DB: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: test
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    container:
-      image: ruby:2.7.7
-      env:
-        RAILS_ENV: test
-        POSTGRES_HOST: postgres
-        RAILS_DATABASE_USER: postgres
-        RAILS_DATABASE_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: bundler set up
-        run: |
-          gem install bundler
-          bundle install
-      - name: install node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
+      - uses: actions/checkout@v2
+      
+      - name: Build the Docker Compose stack
+        run: docker-compose up -d
 
-      - name: db migrate
-        run: |
-          bundle exec rails db:migrate
+      - name: Setup Database
+        run: docker-compose run web rails db:create db:schema:load --environment test
 
-      - name: run rspec
-        run: bundle exec rspec
+      - name: Run RSpec
+        run: docker-compose run web bundle exec rspec
