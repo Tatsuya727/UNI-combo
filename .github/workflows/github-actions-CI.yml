@@ -22,12 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Build the Docker Compose stack
         run: docker-compose up -d
 
       - name: Setup Database
-        run: docker-compose run web rails db:create db:schema:load --environment test
+        run: docker-compose run web rails db:create db:schema:load RAILS_ENV=test
 
       - name: Run RSpec
         run: docker-compose run web bundle exec rspec
