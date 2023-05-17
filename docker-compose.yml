@@ -15,3 +15,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  nuxt:
+    build: ../UNI-combo-front
+    volumes:
+      - ../UNI-combo-front:/app
+    ports:
+      - "8080:3000"
