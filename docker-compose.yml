@@ -7,17 +7,17 @@ services:
     environment:
       POSTGRES_PASSWORD: password
   web:
-    build: .
+    build: ./UNI-combo
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/UNI-combo
+      - ./UNI-combo:/UNI-combo
     ports:
       - "3000:3000"
     depends_on:
       - db
   nuxt:
-    build: ../UNI-combo-front
+    build: ./UNI-combo-front
     volumes:
-      - ../UNI-combo-front:/app
+      - ./UNI-combo-front:/app
     ports:
       - "8080:3000"
