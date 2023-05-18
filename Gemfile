@@ -21,7 +21,7 @@ gem "bootstrap4-kaminari-views"
 gem "carrierwave"
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
-# gem "redis", "~> 4.0"
+gem 'ddtrace'
 
 group :development, :test do
   gem "sqlite3"
