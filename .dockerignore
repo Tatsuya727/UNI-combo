@@ -3,9 +3,5 @@
 .dockerignore
 README.md
 tmp/
-log/
 test/
 spec/
-public/assets/
-node_modules/
-vendor/bundle
