@@ -24,6 +24,7 @@ URL: https://unicombohub.com/
 - Rails: 7
 - Bootstrap
 - DB: SQLite(開発環境)、Postgresql(本番環境)
+- CI: Github Actions
 - デプロイ: [Render.com](https://render.com/)
 - 動画保存: AWS S3
 - メール機能: AWS SES
