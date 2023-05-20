@@ -4,12 +4,12 @@ class CombosController < ApplicationController
     before_action :set_characters, only: [:index, :show]
 
     def index
-        if params[:character_id].present?
-            @combo     = Combo.where(character_id: params[:character_id]).page(params[:page])
-            @character = Character.find(params[:character_id])
-        else
-            @combo = Combo.all.page(params[:page])
-        end
+        @combo = Combo.all
+        @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present?
+        @combo = @combo.includes(:character, :situations)          if params[:situation].present?
+        @combo = @combo.page(params[:page])
+        @character  = Character.find(params[:character_id])        if params[:character_id].present?
+        @situations = Situation.all
     end
 
     def show
