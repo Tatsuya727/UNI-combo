@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @combos = @user.combo.page(params[:page])
+    @situations = Situation.all
   end
 
   def new

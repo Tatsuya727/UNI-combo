@@ -8,7 +8,8 @@ class CombosController < ApplicationController
         @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present?
         @combo = @combo.includes(:character, :situations)          if params[:situation].present?
         @combo = @combo.page(params[:page])
-        @character = Character.find(params[:character_id])         if params[:character_id].present?
+        @character  = Character.find(params[:character_id])        if params[:character_id].present?
+        @situations = Situation.all
     end
 
     def show
