@@ -17,7 +17,9 @@ class CombosController < ApplicationController
     end
     
     def new
-        @combo = Combo.new
+        @combo      = Combo.new
+        @characters = Character.all
+        @situations = Situation.all
     end
 
     def create
