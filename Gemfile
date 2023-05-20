@@ -21,6 +21,7 @@ gem "bootstrap4-kaminari-views"
 gem "carrierwave"
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem "sqlite3"
