@@ -20,6 +20,7 @@ URL: https://unicombohub.com/
 
 # 使用技術
 
+- OS: WSL2 Ubuntu 22.04.1
 - Ruby: 2.7.7
 - Rails: 7
 - Bootstrap
