@@ -1,33 +1,18 @@
 class SessionsController < ApplicationController
+  MAX_LOGIN_ATTEMPTS = 7 # ログイン失敗回数の上限
+  RESET_TIME = 1.hour # ログイン失敗回数のリセット時間
+
   def new
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if user.activated? # メアドに送られたリンクをクリックすると
-        if user.login_attempts < 7 || Time.zone.now - user.last_attemts_at > 1.hour # 7回以上ログイン失敗したら1時間後にリセット
-          user.update(login_attempts: 0, last_attemts_at: nil)
-          forwarding_url = session[:forwarding_url] # アクセスしようとしたURLを保存
-          reset_session
-          params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-          log_in user
-          redirect_to forwarding_url || user
-        else
-          flash.now[:danger] = "ログインに失敗しました。1時間後に再度お試しください。"
-          redirect_to root_url
-        end
-      else
-        message  = "アカウントが登録できませんでした。"
-        message += "あなたのメールアドレスに送られたリンクをもう一度確認してください。"
-        flash[:warning] = message
-        redirect_to root_url
-      end
+    return render_new unless user && authenticate_user(user)
+    
+    if user.activated? # メアドに送られたリンクをクリックすると
+      login_success(user)
     else
-      user&.increment!(:login_attempts) # ログイン失敗回数をカウント
-      user&.update(last_attemts_at: Time.zone.now) if user&.login_attempts == 1 # ログイン失敗回数が1回の時に時間を記録
-      flash.now[:danger] = "メールアドレスかパスワードが間違っています。"
-      render "new", status: :unprocessable_entity
+      login_failed
     end
   end
 
@@ -35,4 +20,52 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url, status: :see_other
   end
+
+  private
+
+    def authenticate_user(user)
+      if user.authenticate(params[:session][:password])
+        reset_login_attempts(user) if too_many_login_attempts?(user)
+        true
+      else
+        increase_login_attempts(user)
+        false
+      end
+    end
+  
+    def too_many_login_attempts?(user)
+      user.login_attempts < MAX_LOGIN_ATTEMPTS || Time.zone.now - user.last_attemts_at > RESET_TIME
+    end
+
+    def reset_login_attempts(user)
+      user.update(login_attempts: 0, last_attempt_at: nil)
+    end
+
+    def login_success(user)
+      forwarding_url = session[:forwarding_url] # アクセスしようとしたURLを保存
+      reset_session
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      log_in user
+      redirect_to forwarding_url || user
+    end
+
+    def login_failed
+      flash.now[:danger] = "ログインに失敗しました。1時間後に再度お試しください。"
+      render "new", status: :unprocessable_entity
+    end
+
+    def unactivated_user
+      flash[:warning] = "アカウントが登録できませんでした。あなたのメールアドレスに送られたリンクをもう一度確認してください。"
+      redirect_to root_url
+    end
+
+    def increase_login_attempts(user)
+      user.increment!(:login_attempts) # ログイン失敗回数をカウント
+      user.update(last_attempt_at: Time.zone.now) if user.login_attempts == 1 # ログイン失敗回数が1回の時に時間を記録
+    end
+
+    def render_new
+      flash.now[:danger] = "メールアドレスかパスワードが間違っています。"
+      render "new", status: :unprocessable_entity
+    end
 end

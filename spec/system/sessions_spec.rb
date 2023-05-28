@@ -27,7 +27,9 @@ RSpec.describe "Sessions", type: :system do
     describe "#create" do
       context "有効な値の場合" do
         it "ログインが成功する" do
-          login_in_login_page user
+          fill_in "session[email]",    with: user.email
+          fill_in "session[password]", with: user.password
+          click_button "ログイン"
           expect(current_path).to eq user_path(User.last)
         end
       end
@@ -63,6 +65,17 @@ RSpec.describe "Sessions", type: :system do
           expect(page).to_not have_content "メールアドレスかパスワードが間違っています。"
         end
       end
+
+      context "7回以上ログイン失敗した場合" do
+        it "1時間後にリセットされる" do
+          7.times do
+            fill_in "session[email]",    with: user.email
+            fill_in "session[password]", with: "invalid password"
+            click_button "ログイン"
+          end
+          expect(current_path).to eq login_path
+        end
+      end      
     end
   end
 
