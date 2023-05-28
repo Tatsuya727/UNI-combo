@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     return render_new unless user && authenticate_user(user)
-    
+
     if user.activated? # メアドに送られたリンクをクリックすると
       login_success(user)
     else
@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
     end
   
     def too_many_login_attempts?(user)
-      user.login_attempts < MAX_LOGIN_ATTEMPTS || Time.zone.now - user.last_attemts_at > RESET_TIME
+      user.login_attempts < MAX_LOGIN_ATTEMPTS && (user.last_attempt_at.nil? || Time.zone.now - user.last_attempt_at > RESET_TIME)
     end
 
     def reset_login_attempts(user)
