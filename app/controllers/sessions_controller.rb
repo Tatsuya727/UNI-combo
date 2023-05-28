@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       if user.activated? # メアドに送られたリンクをクリックすると
-        forwarding_url = session[:forwarding_url]
+        forwarding_url = session[:forwarding_url] # アクセスしようとしたURLを保存
         reset_session
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)
         log_in user
