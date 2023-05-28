@@ -67,15 +67,15 @@ RSpec.describe "Sessions", type: :system do
       end
 
       context "7回以上ログイン失敗した場合" do
-        it "1時間後にリセットされる" do
-          7.times do
+        it "rootにリダイレクト" do
+          8.times do
             fill_in "session[email]",    with: user.email
             fill_in "session[password]", with: "invalid password"
             click_button "ログイン"
           end
-          expect(current_path).to eq login_path
+          expect(current_path).to eq root_path
         end
-      end      
+      end
     end
   end
 

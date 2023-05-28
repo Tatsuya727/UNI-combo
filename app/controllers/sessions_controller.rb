@@ -7,9 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    return render_new unless user && authenticate_user(user)
+    return account_lock if user && user.login_attempts >= MAX_LOGIN_ATTEMPTS # ログイン失敗回数が上限に達した時ログインを制限
 
-    if user.activated? # メアドに送られたリンクをクリックすると
+    return login_failed unless user && authenticate_user(user)
+
+    if user.activated? #アカウントが有効化されているかどうか
       login_success(user)
     else
       login_failed
@@ -23,7 +25,7 @@ class SessionsController < ApplicationController
 
   private
 
-    def authenticate_user(user)
+    def authenticate_user(user) # ユーザー認証
       if user.authenticate(params[:session][:password])
         reset_login_attempts(user) if too_many_login_attempts?(user)
         true
@@ -50,7 +52,7 @@ class SessionsController < ApplicationController
     end
 
     def login_failed
-      flash.now[:danger] = "ログインに失敗しました。1時間後に再度お試しください。"
+      flash.now[:danger] = "メールアドレスかパスワードが間違っています。"
       render "new", status: :unprocessable_entity
     end
 
@@ -64,8 +66,8 @@ class SessionsController < ApplicationController
       user.update(last_attempt_at: Time.zone.now) if user.login_attempts == 1 # ログイン失敗回数が1回の時に時間を記録
     end
 
-    def render_new
-      flash.now[:danger] = "メールアドレスかパスワードが間違っています。"
-      render "new", status: :unprocessable_entity
+    def account_lock
+      flash[:danger] = "ログインに失敗しました。1時間後に再度お試しください。"
+      redirect_to root_url and return
     end
 end
