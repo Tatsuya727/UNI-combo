@@ -5,10 +5,10 @@ class CombosController < ApplicationController
 
     def index
         @combo = Combo.all
-        @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present?
-        @combo = @combo.includes(:character, :situations)          if params[:situation].present?
-        @combo = @combo.page(params[:page])
-        @character  = Character.find(params[:character_id])        if params[:character_id].present?
+        @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present? # viewでキャラクターが選択された場合
+        @combo = @combo.includes(:character, :situations)          if params[:situation].present? # シチュエーションが存在する場合
+        @combo = @combo.page(params[:page]) # ページネーション
+        @character  = Character.find(params[:character_id])        if params[:character_id].present? # viewでキャラクターが選択された場合
         @situations = Situation.all
     end
 
