@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  MAX_LOGIN_ATTEMPTS = 7 # ログイン失敗回数の上限
+  MAX_LOGIN_ATTEMPTS = 10 # ログイン失敗回数の上限
   RESET_TIME = 1.hour # ログイン失敗回数のリセット時間
 
   def new
