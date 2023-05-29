@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-05-29T03:20:04+09:00">2023-05-29T03:20:04+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-05-29T12:03:31+09:00">2023-05-29T12:03:31+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.87
+         2.0
        </span>
     </span> hits/line
     )
@@ -99,7 +99,7 @@
             <td class="cell--number">43</td>
             <td class="cell--number">38</td>
             <td class="cell--number">5</td>
-            <td class="cell--number">3.23</td>
+            <td class="cell--number">3.93</td>
             
           </tr>
         
@@ -121,7 +121,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">12.83</td>
+            <td class="cell--number">14.33</td>
             
           </tr>
         
@@ -143,7 +143,7 @@
             <td class="cell--number">32</td>
             <td class="cell--number">20</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">4.53</td>
+            <td class="cell--number">4.81</td>
             
           </tr>
         
@@ -451,7 +451,7 @@
             <td class="cell--number">61</td>
             <td class="cell--number">61</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.64</td>
+            <td class="cell--number">1.79</td>
             
           </tr>
         
@@ -767,7 +767,7 @@
 
             
 
-            <code class="ruby">        @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present?</code>
+            <code class="ruby">        @combo = @combo.where(character_id: params[:character_id]) if params[:character_id].present? # viewでキャラクターが選択された場合</code>
           </li>
         </div>
       
@@ -778,7 +778,7 @@
 
             
 
-            <code class="ruby">        @combo = @combo.includes(:character, :situations)          if params[:situation].present?</code>
+            <code class="ruby">        @combo = @combo.includes(:character, :situations)          if params[:situation].present? # シチュエーションが存在する場合</code>
           </li>
         </div>
       
@@ -789,7 +789,7 @@
 
             
 
-            <code class="ruby">        @combo = @combo.page(params[:page])</code>
+            <code class="ruby">        @combo = @combo.page(params[:page]) # ページネーション</code>
           </li>
         </div>
       
@@ -800,7 +800,7 @@
 
             
 
-            <code class="ruby">        @character  = Character.find(params[:character_id])        if params[:character_id].present?</code>
+            <code class="ruby">        @character  = Character.find(params[:character_id])        if params[:character_id].present? # viewでキャラクターが選択された場合</code>
           </li>
         </div>
       
@@ -1403,7 +1403,7 @@
 
             
 
-            <code class="ruby">  MAX_LOGIN_ATTEMPTS = 7 # ログイン失敗回数の上限</code>
+            <code class="ruby">  MAX_LOGIN_ATTEMPTS = 10 # ログイン失敗回数の上限</code>
           </li>
         </div>
       
@@ -1474,8 +1474,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="9">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="16" data-linenumber="9">
+            <span class="hits">16</span>
             
 
             
@@ -1485,8 +1485,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="10">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="16" data-linenumber="10">
+            <span class="hits">16</span>
             
 
             
@@ -1507,8 +1507,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="12">
-            <span class="hits">12</span>
+          <li class="covered" data-hits="15" data-linenumber="12">
+            <span class="hits">15</span>
             
 
             
@@ -1694,8 +1694,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="29">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="13" data-linenumber="29">
+            <span class="hits">13</span>
             
 
             
@@ -1738,8 +1738,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="33">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="33">
+            <span class="hits">11</span>
             
 
             
@@ -1749,8 +1749,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="34">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="34">
+            <span class="hits">11</span>
             
 
             
@@ -1980,8 +1980,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="55">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="13" data-linenumber="55">
+            <span class="hits">13</span>
             
 
             
@@ -1991,8 +1991,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="56">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="13" data-linenumber="56">
+            <span class="hits">13</span>
             
 
             
@@ -2090,8 +2090,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="65">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="65">
+            <span class="hits">11</span>
             
 
             
@@ -2101,8 +2101,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="66">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="66">
+            <span class="hits">11</span>
             
 
             
@@ -2845,8 +2845,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="4">
-            <span class="hits">25</span>
+          <li class="covered" data-hits="28" data-linenumber="4">
+            <span class="hits">28</span>
             
 
             
@@ -2856,8 +2856,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="5">
-            <span class="hits">25</span>
+          <li class="covered" data-hits="28" data-linenumber="5">
+            <span class="hits">28</span>
             
 
             
@@ -2889,8 +2889,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="20" data-linenumber="8">
-            <span class="hits">20</span>
+          <li class="covered" data-hits="23" data-linenumber="8">
+            <span class="hits">23</span>
             
 
             
@@ -3171,8 +3171,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="37" data-linenumber="15">
-            <span class="hits">37</span>
+          <li class="covered" data-hits="40" data-linenumber="15">
+            <span class="hits">40</span>
             
 
             
@@ -3226,8 +3226,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="26" data-linenumber="20">
-            <span class="hits">26</span>
+          <li class="covered" data-hits="29" data-linenumber="20">
+            <span class="hits">29</span>
             
 
             
@@ -3336,8 +3336,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="30" data-linenumber="30">
-            <span class="hits">30</span>
+          <li class="covered" data-hits="33" data-linenumber="30">
+            <span class="hits">33</span>
             
 
             
@@ -11162,7 +11162,7 @@
 
             
 
-            <code class="ruby">      context &quot;7回以上ログイン失敗した場合&quot; do</code>
+            <code class="ruby">      context &quot;10回以上ログイン失敗した場合&quot; do</code>
           </li>
         </div>
       
@@ -11184,13 +11184,13 @@
 
             
 
-            <code class="ruby">          8.times do</code>
+            <code class="ruby">          11.times do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="72">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="72">
+            <span class="hits">11</span>
             
 
             
@@ -11200,8 +11200,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="73">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="73">
+            <span class="hits">11</span>
             
 
             
@@ -11211,8 +11211,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="74">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="74">
+            <span class="hits">11</span>
             
 
             
